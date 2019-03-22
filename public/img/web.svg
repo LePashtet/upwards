@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="27" height="27">
+	<defs>
+		<clipPath id="clip_0">
+			<rect x="-1196" y="-200" width="1920" height="2160" clip-rule="evenodd"/>
+		</clipPath>
+	</defs>
+	<g clip-path="url(#clip_0)">
+		<path fill="rgb(36,168,172)" stroke="none" d="M0 13.487C0 6.03829 6.03829 0 13.487 0C20.9357 0 26.974 6.03829 26.974 13.487C26.974 20.9357 20.9357 26.974 13.487 26.974C6.03829 26.974 0 20.9357 0 13.487ZM2.40785 13.487C2.40785 19.596 7.3778 24.5661 13.487 24.5661C19.5962 24.5661 24.5661 19.5962 24.5662 13.487C24.5662 7.3778 19.5962 2.40785 13.487 2.40785C7.3778 2.40785 2.40785 7.37789 2.40785 13.487Z" fill-rule="evenodd"/>
+	</g>
+	<defs>
+		<clipPath id="clip_1">
+			<rect x="-1196" y="-200" width="1920" height="2160" clip-rule="evenodd"/>
+		</clipPath>
+	</defs>
+	<g clip-path="url(#clip_1)">
+		<path fill="rgb(36,168,172)" stroke="none" transform="translate(4.44312 10.2378)" d="M3.32206 0L0.547212 0C0.273051 0.714622 0.0857158 1.47145 0 2.25889L3.09344 2.25889C3.12881 1.4862 3.20607 0.730017 3.32206 0Z"/>
+	</g>
+	<defs>
+		<clipPath id="clip_2">
+			<rect x="-1196" y="-200" width="1920" height="2160" clip-rule="evenodd"/>
+		</clipPath>
+	</defs>
+	<g clip-path="url(#clip_2)">
+		<path fill="rgb(36,168,172)" stroke="none" transform="translate(6.04834 5.38251)" d="M0 2.87471L2.14627 2.87471C2.3828 2.02958 2.67679 1.24084 3.02696 0.531955C3.11836 0.346931 3.21383 0.171339 3.31106 0C1.98755 0.676895 0.851101 1.6678 0 2.87471Z"/>
+	</g>
+	<defs>
+		<clipPath id="clip_3">
+			<rect x="-1196" y="-200" width="1920" height="2160" clip-rule="evenodd"/>
+		</clipPath>
+	</defs>
+	<g clip-path="url(#clip_3)">
+		<path fill="rgb(36,168,172)" stroke="none" transform="translate(19.2087 14.4773)" d="M0 2.25889L2.77485 2.25889C3.04906 1.54432 3.2363 0.787439 3.32192 0L0.228622 0C0.193207 0.772737 0.115952 1.52888 0 2.25889Z"/>
+	</g>
+	<defs>
+		<clipPath id="clip_4">
+			<rect x="-1196" y="-200" width="1920" height="2160" clip-rule="evenodd"/>
+		</clipPath>
+	</defs>
+	<g clip-path="url(#clip_4)">
+		<path fill="rgb(36,168,172)" stroke="none" transform="translate(19.2087 10.2378)" d="M0.228483 2.25889L3.32192 2.25889C3.23635 1.47145 3.04906 0.714575 2.77485 0L0 0C0.11586 0.729971 0.193115 1.48616 0.228483 2.25889Z"/>
+	</g>
+	<defs>
+		<clipPath id="clip_5">
+			<rect x="-1196" y="-200" width="1920" height="2160" clip-rule="evenodd"/>
+		</clipPath>
+	</defs>
+	<g clip-path="url(#clip_5)">
+		<path fill="rgb(36,168,172)" stroke="none" transform="translate(17.6145 18.7168)" d="M0.284101 2.34262C0.192699 2.52769 0.0972278 2.70328 0 2.87457C1.32365 2.19777 2.45996 1.20691 3.31101 0L1.16474 0C0.928218 0.844998 0.634223 1.63387 0.284101 2.34262Z"/>
+	</g>
+	<defs>
+		<clipPath id="clip_6">
+			<rect x="-1196" y="-200" width="1920" height="2160" clip-rule="evenodd"/>
+		</clipPath>
+	</defs>
+	<g clip-path="url(#clip_6)">
+		<path fill="rgb(36,168,172)" stroke="none" transform="translate(17.6145 5.38263)" d="M1.16474 2.87458L3.31101 2.87458C2.45991 1.66771 1.32365 0.676803 0 0C0.0972278 0.171339 0.192699 0.346885 0.284101 0.531909C0.634315 1.24071 0.92831 2.02953 1.16474 2.87458Z"/>
+	</g>
+	<defs>
+		<clipPath id="clip_7">
+			<rect x="-1196" y="-200" width="1920" height="2160" clip-rule="evenodd"/>
+		</clipPath>
+	</defs>
+	<g clip-path="url(#clip_7)">
+		<path fill="rgb(36,168,172)" stroke="none" transform="translate(6.04834 18.7168)" d="M2.14645 0L0 0C0.851101 1.20686 1.98741 2.19777 3.31106 2.87457C3.21383 2.70328 3.11836 2.52769 3.02696 2.34262C2.67684 1.63387 2.38284 0.844998 2.14645 0Z"/>
+	</g>
+	<defs>
+		<clipPath id="clip_8">
+			<rect x="-1196" y="-200" width="1920" height="2160" clip-rule="evenodd"/>
+		</clipPath>
+	</defs>
+	<g clip-path="url(#clip_8)">
+		<path fill="rgb(36,168,172)" stroke="none" transform="translate(4.44312 14.4773)" d="M3.09344 0L0 0C0.0856233 0.787439 0.272913 1.54432 0.547074 2.25889L3.32192 2.25889C3.20607 1.52888 3.12881 0.772737 3.09344 0Z"/>
+	</g>
+	<defs>
+		<clipPath id="clip_9">
+			<rect x="-1196" y="-200" width="1920" height="2160" clip-rule="evenodd"/>
+		</clipPath>
+	</defs>
+	<g clip-path="url(#clip_9)">
+		<path fill="rgb(36,168,172)" stroke="none" transform="translate(14.4773 4.71722)" d="M0 0L0 3.53996L2.23897 3.53996C1.67363 1.80082 0.855724 0.55743 0 0Z"/>
+	</g>
+	<defs>
+		<clipPath id="clip_10">
+			<rect x="-1196" y="-200" width="1920" height="2160" clip-rule="evenodd"/>
+		</clipPath>
+	</defs>
+	<g clip-path="url(#clip_10)">
+		<path fill="rgb(36,168,172)" stroke="none" transform="translate(10.2578 4.71729)" d="M0 3.53991L2.23897 3.53991L2.23897 0C1.3832 0.557384 0.565336 1.80077 0 3.53991Z"/>
+	</g>
+	<defs>
+		<clipPath id="clip_11">
+			<rect x="-1196" y="-200" width="1920" height="2160" clip-rule="evenodd"/>
+		</clipPath>
+	</defs>
+	<g clip-path="url(#clip_11)">
+		<path fill="rgb(36,168,172)" stroke="none" transform="translate(9.51831 14.4773)" d="M0.251091 2.25889L2.97828 2.25889L2.97828 0L0 0C0.0394366 0.797795 0.126031 1.55319 0.251091 2.25889Z"/>
+	</g>
+	<defs>
+		<clipPath id="clip_12">
+			<rect x="-1196" y="-200" width="1920" height="2160" clip-rule="evenodd"/>
+		</clipPath>
+	</defs>
+	<g clip-path="url(#clip_12)">
+		<path fill="rgb(36,168,172)" stroke="none" transform="translate(9.51831 10.2378)" d="M0 2.25889L2.97828 2.25889L2.97828 0L0.251091 0C0.126077 0.705652 0.0394829 1.4611 0 2.25889Z"/>
+	</g>
+	<defs>
+		<clipPath id="clip_13">
+			<rect x="-1196" y="-200" width="1920" height="2160" clip-rule="evenodd"/>
+		</clipPath>
+	</defs>
+	<g clip-path="url(#clip_13)">
+		<path fill="rgb(36,168,172)" stroke="none" transform="translate(14.4773 10.2378)" d="M0 0L0 2.25889L2.97828 2.25889C2.93879 1.46114 2.85211 0.705652 2.72714 0L0 0Z"/>
+	</g>
+	<defs>
+		<clipPath id="clip_14">
+			<rect x="-1196" y="-200" width="1920" height="2160" clip-rule="evenodd"/>
+		</clipPath>
+	</defs>
+	<g clip-path="url(#clip_14)">
+		<path fill="rgb(36,168,172)" stroke="none" transform="translate(14.4773 14.4773)" d="M0 2.25889L2.72714 2.25889C2.85206 1.55333 2.93879 0.797887 2.97828 0L2.62804e-15 0L2.62804e-15 2.25889L0 2.25889Z"/>
+	</g>
+	<defs>
+		<clipPath id="clip_15">
+			<rect x="-1196" y="-200" width="1920" height="2160" clip-rule="evenodd"/>
+		</clipPath>
+	</defs>
+	<g clip-path="url(#clip_15)">
+		<path fill="rgb(36,168,172)" stroke="none" transform="translate(10.2578 18.7168)" d="M2.23897 3.53991L2.23897 0L0 0C0.565336 1.7391 1.3832 2.98253 2.23897 3.53991Z"/>
+	</g>
+	<defs>
+		<clipPath id="clip_16">
+			<rect x="-1196" y="-200" width="1920" height="2160" clip-rule="evenodd"/>
+		</clipPath>
+	</defs>
+	<g clip-path="url(#clip_16)">
+		<path fill="rgb(36,168,172)" stroke="none" transform="translate(14.4773 18.7168)" d="M0 3.53991C0.85577 2.98262 1.67363 1.73923 2.23897 0L0 0L0 3.53991Z"/>
+	</g>
+
+</svg>
