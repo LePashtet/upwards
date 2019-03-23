@@ -28,15 +28,12 @@
     margin: 0;
     padding: 0;
   }
-  #app{
-    padding-bottom: 45px;
-  }
   .header{
     margin-top: 22px
   }
-  .footer{
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-  }
+  /*.footer{*/
+    /*position: absolute;*/
+    /*bottom: 0;*/
+    /*width: 100%;*/
+  /*}*/
 </style>

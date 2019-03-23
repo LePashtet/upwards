@@ -1,3 +1,4 @@
+<!--EMPTY-->
 <template>
   <div class="home">
 

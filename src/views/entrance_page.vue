@@ -1,22 +1,24 @@
 <template>
     <div class="guest-wrp">
-    <Registration></Registration>
+    <LogIn class="login"></LogIn>
 
     </div>
 </template>
 
 <script>
-  import Registration from '@/components/Registration';
+  import LogIn from '@/components/LogIn_Reg.vue';
     export default {
         name: "Guest",
         components:{
-          Registration,
+          LogIn,
         }
     }
 </script>
 
 <style scoped>
   .guest-wrp{
-    background-image: url("/public/img/Homepage_bg.svg");
+  }
+  .login{
+    margin: 200px auto;
   }
 </style>

@@ -14,7 +14,7 @@
       <div class="e-body">
         <my-filter class="filter"></my-filter>
         <div class="events">
-          <EventCell class="event" header='Upwards presentation' location='Odessa' topic='Presentation' ></EventCell>
+          <EventCell class="event" header='Upwards presentation' location='Odessa' topic='Presentation' level="Junior" price="Free" ></EventCell>
           <EventCell class="event" header='Upwards presentation' location='Odessa' topic='Presentation'></EventCell>
           <EventCell class="event" header='Upwards presentation' location='Odessa' topic='Presentation'></EventCell>
           <EventCell class="event" header='Upwards presentation' location='Odessa' topic='Presentation'></EventCell>

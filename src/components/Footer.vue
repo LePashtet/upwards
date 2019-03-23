@@ -3,7 +3,7 @@
       <p class="upwards">Upwards!</p>
       <div class="ft-menu">
         <p>	&#169; Upwards 2019</p>
-        <p>Icons provided by <a href="flaticon.com">flaticon.com</a></p>
+        <p>Icons provided by <a target="_blank" href="https://www.flaticon.com/">flaticon.com</a></p>
         <p>Privacy Policy</p>
         <p>About</p>
       </div>

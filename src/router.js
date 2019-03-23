@@ -9,14 +9,14 @@ export default new Router({
   base: process.env.BASE_URL,
   routes: [
     {
-      path: '/',
-      name: 'home',
-      component: Home,
+      path: '/entrance/:id',
+      name: 'registration',
+      component: () => import('./views/entrance_page.vue'),
     },
     {
       path: '/about',
       name: 'about',
-      component: () => import('./views/Guest.vue'),
+      component: () => import('./views/entrance_page.vue'),
     },
     {
       path: '/event',

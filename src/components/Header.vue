@@ -1,6 +1,6 @@
 <template>
     <div class="hd-wrp">
-      <p class="upwards">Upwards!</p>
+      <a href="/"><p class="upwards">Upwards!</p></a>
       <div class="hd-menu">
         <p>Forum</p>
         <p>Study</p>
@@ -8,7 +8,7 @@
         <p>Motivation</p>
         <p>Team</p>
       </div>
-      <LogIn_btn class="btn" text="Log In"></LogIn_btn>
+      <LogIn_btn v-show="this.$route.name !== 'registration' "  class="btn" text="Log In" link></LogIn_btn><!--TODO :click="this.$router.push({path:'log_in'})"-->
     </div>
 </template>
 

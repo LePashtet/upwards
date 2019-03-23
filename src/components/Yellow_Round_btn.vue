@@ -21,6 +21,6 @@
    font-family: "Open Sans", sans-serif;
    font-size: 27px;
    font-weight: 400;
-   height: 44px;
+   line-height: 44px;
  }
 </style>
