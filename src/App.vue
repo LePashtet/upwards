@@ -31,9 +31,8 @@
   .header{
     margin-top: 22px
   }
-  /*.footer{*/
+  .footer{
     /*position: absolute;*/
     /*bottom: 0;*/
-    /*width: 100%;*/
-  /*}*/
+  }
 </style>

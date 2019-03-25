@@ -22,6 +22,7 @@
     color: inherit;
   }
   .ft-wrp{
+    width: 100%;
     cursor: default;
     display: flex;
     background-color: black;

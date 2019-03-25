@@ -19,6 +19,8 @@
   .guest-wrp{
   }
   .login{
+    text-align: center;
     margin: 200px auto;
+    /*TODO оно немного кривое*/
   }
 </style>

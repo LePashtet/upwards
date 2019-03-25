@@ -28,12 +28,12 @@
     text-decoration: none;
     color: black;
   }
-  .hd-wrp{
-    cursor: default;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-  }
+    .hd-wrp{
+      cursor: default;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-around;
+    }
   .hd-menu{
     align-self: center;
     font-family: "HelveticaNeue-Light";
@@ -52,5 +52,15 @@
   }
   .btn{
     align-self: center;
+  }
+  @media screen and (max-width: 768px){
+    .hd-wrp{
+      flex-direction: column;
+      justify-content: space-around;
+      align-items: center;
+    }
+    .upwards{
+        margin-bottom: 35px;
+    }
   }
 </style>

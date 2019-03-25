@@ -95,8 +95,7 @@
     border: none;
   }
   .reg-btn{
-    margin: 0 auto;
-    text-align: center;
+    margin: auto 0;
   }
   .policy{
     margin: 15px 0 40px 0;
@@ -107,6 +106,8 @@
   }
   .already_have{
     text-align: center;
-
+    font-family: "Open Sans", sans-serif;
+    font-size: 22px;
+    font-weight: 400;
   }
 </style>
