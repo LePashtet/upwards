@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="264" height="313">
+	<defs>
+		<clipPath id="clip_0">
+			<rect x="-828" y="-1910" width="1920" height="3150" clip-rule="evenodd"/>
+		</clipPath>
+	</defs>
+	<g clip-path="url(#clip_0)">
+		<path fill="rgb(36,168,172)" stroke="none" transform="translate(70 0)" d="M35.02 0L61.8 0C62.9376 0 63.86 0.925358 63.86 2.06667L63.86 121.933C63.86 123.075 62.9376 124 61.8 124L2.06 124C0.922373 124 0 123.075 0 121.933L0 18.6C0 17.4587 0.922373 16.5333 2.06 16.5333L32.96 16.5333L32.96 2.06667C32.96 0.925358 33.8824 0 35.02 0ZM59.74 4.13333L59.74 12.4L37.08 12.4L37.08 4.13333L59.74 4.13333ZM37.08 22.7333L59.74 22.7333L59.74 16.5333L37.08 16.5333L37.08 22.7333ZM32.96 26.8667L32.96 20.6667L4.12 20.6667L4.12 26.8667L32.96 26.8667ZM37.08 26.8667L37.08 99.2L59.74 99.2L59.74 26.8667L37.08 26.8667ZM4.12 31L32.96 31L32.96 93L4.12 93L4.12 31ZM4.12 97.1333L32.96 97.1333L32.96 103.333L4.12 103.333L4.12 97.1333ZM37.08 107.467L59.74 107.467L59.74 103.333L37.08 103.333L37.08 107.467ZM4.12 107.467L32.96 107.467L32.96 119.867L4.12 119.867L4.12 107.467ZM37.08 111.6L37.08 119.867L59.74 119.867L59.74 111.6L37.08 111.6Z" fill-rule="evenodd"/>
+	</g>
+	<defs>
+		<clipPath id="clip_1">
+			<rect x="-828" y="-1910" width="1920" height="3150" clip-rule="evenodd"/>
+		</clipPath>
+	</defs>
+	<g clip-path="url(#clip_1)">
+		<path fill="rgb(36,168,172)" stroke="none" transform="translate(133.86 16.74)" d="M35.1882 1.54268L60.0737 96.4299C60.3582 97.5257 59.701 98.6457 58.6014 98.9378L27.4945 107.189C26.9619 107.332 26.3939 107.257 25.9169 106.982C25.439 106.706 25.0917 106.252 24.9529 105.72L0.0674635 10.8332C-0.220113 9.73532 0.438072 8.61329 1.53977 8.32119L32.6466 0.0701362C33.1802 -0.0718805 33.7483 0.00366022 34.2252 0.279636C34.7032 0.556618 35.0495 1.01087 35.1882 1.54268ZM31.7008 4.58948L33.9589 13.2011L6.85892 20.3855L4.60286 11.7779L31.7008 4.58948ZM35.006 17.1907L7.90594 24.3771L8.88309 28.1008L35.9811 20.9033L35.006 17.1907ZM37.0281 24.9059L49.0557 70.7974L21.9658 77.9868L9.93821 32.0923L37.0281 24.9059ZM52.2352 82.8859L50.1118 74.791L23.0199 81.9804L25.1352 90.0723L52.2352 82.8859ZM26.1822 94.0619L28.4403 102.674L55.5383 95.4811L53.2822 86.8735L26.1822 94.0619Z" fill-rule="evenodd"/>
+	</g>
+	<defs>
+		<clipPath id="clip_2">
+			<rect x="-828" y="-1910" width="1920" height="3150" clip-rule="evenodd"/>
+		</clipPath>
+	</defs>
+	<g clip-path="url(#clip_2)">
+		<path fill="rgb(36,168,172)" stroke="none" transform="translate(78.6801 37.2)" d="M2.046 0L18.414 0C19.5439 0 20.46 0.916104 20.46 2.046L20.46 18.414C20.46 19.5439 19.5439 20.46 18.414 20.46L2.046 20.46C0.916104 20.46 0 19.5439 0 18.414L0 2.046C0 0.916104 0.916104 0 2.046 0ZM4.092 16.368L16.368 16.368L16.368 4.092L4.092 4.092L4.092 16.368Z" fill-rule="evenodd"/>
+	</g>
+	<defs>
+		<clipPath id="clip_3">
+			<rect x="-828" y="-1910" width="1920" height="3150" clip-rule="evenodd"/>
+		</clipPath>
+	</defs>
+	<g clip-path="url(#clip_3)">
+		<text fill="rgb(255,255,255)" stroke="none" transform="translate(48 137)" font-size="36" font-weight="500" font-family="Open Sans, Open Sans SemiBold" x="0" y="37.349609">
+				Dictionary
+		</text>
+	</g>
+	<defs>
+		<clipPath id="clip_4">
+			<rect x="-828" y="-1910" width="1920" height="3150" clip-rule="evenodd"/>
+		</clipPath>
+	</defs>
+	<g clip-path="url(#clip_4)">
+		<text fill="rgb(255,255,255)" stroke="none" transform="translate(0 182)" font-size="19" font-family="Open Sans" x="15.648193" y="19.781738">
+				Came across an unknown 
+		</text>
+	</g>
+	<defs>
+		<clipPath id="clip_5">
+			<rect x="-828" y="-1910" width="1920" height="3150" clip-rule="evenodd"/>
+		</clipPath>
+	</defs>
+	<g clip-path="url(#clip_5)">
+		<text fill="rgb(255,255,255)" stroke="none" transform="translate(0 182)" font-size="19" font-family="Open Sans" x="17.54541" y="45.781738">
+				word? Still being afraid of 
+		</text>
+	</g>
+	<defs>
+		<clipPath id="clip_6">
+			<rect x="-828" y="-1910" width="1920" height="3150" clip-rule="evenodd"/>
+		</clipPath>
+	</defs>
+	<g clip-path="url(#clip_6)">
+		<text fill="rgb(255,255,255)" stroke="none" transform="translate(0 182)" font-size="19" font-family="Open Sans" x="40.093994" y="71.781738">
+				«object-oriented» or 
+		</text>
+	</g>
+	<defs>
+		<clipPath id="clip_7">
+			<rect x="-828" y="-1910" width="1920" height="3150" clip-rule="evenodd"/>
+		</clipPath>
+	</defs>
+	<g clip-path="url(#clip_7)">
+		<text fill="rgb(255,255,255)" stroke="none" transform="translate(0 182)" font-size="19" font-family="Open Sans" x="27.875732" y="97.781738">
+				«reference type»? Well, 
+		</text>
+	</g>
+	<defs>
+		<clipPath id="clip_8">
+			<rect x="-828" y="-1910" width="1920" height="3150" clip-rule="evenodd"/>
+		</clipPath>
+	</defs>
+	<g clip-path="url(#clip_8)">
+		<text fill="rgb(255,255,255)" stroke="none" transform="translate(0 182)" font-size="19" font-family="Open Sans" x="9.7988281" y="123.78174">
+				you`re not alone. Find that 
+		</text>
+	</g>
+
+</svg>

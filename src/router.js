@@ -14,6 +14,11 @@ export default new Router({
       component: () => import('./views/entrance_page.vue'),
     },
     {
+      path: '/entrance/log_in/confirm',
+      name: 'registration',
+      component: () => import('./views/confirmation.vue'),
+    },
+    {
       path: '/about',
       name: 'about',
       component: () => import('./views/entrance_page.vue'),
@@ -22,6 +27,16 @@ export default new Router({
       path: '/event',
       name: 'event',
       component: () => import('./views/Events.vue'),
+    },
+    {
+      path: '/',
+      name: 'home',
+      component: Home,
+    },
+    {
+      path: '/forum',
+      name: 'forum',
+      component: () => import('./views/Forum.vue'),
     },
     // {
     //   path: '/about',

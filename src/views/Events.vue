@@ -2,13 +2,10 @@
     <div class="e-wrp">
       <div class="calendar">
         <vue-slider
-          v-model="value"
-          :data="data"
+          v-model="slider.value"
+          :data="slider.data"
           :marks="true"
           :ref="slider"/>
-        <br>
-        <br>
-        <p>it is {{ showMonth }}</p>
       </div>
 
       <div class="e-body">
@@ -25,7 +22,7 @@
 
 <script>
   import EventCell from '@/components/Event.vue';
-  import myFilter from '@/components/Filter.vue';
+  import myFilter from '@/components/filters/Event-filter.vue';
   import VueSlider from 'vue-slider-component';
   import 'vue-slider-component/theme/antd.css';
 
@@ -39,14 +36,12 @@
     },
     data: function () {
       return {
-        data: ['Feb','Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec','Jan'],
-      }
+        slider: {
+          data: ['Feb','Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec','Jan'],
+          value:'',
+        },
+         }
     },
-    methods: {
-      showMonth(){
-        return this.$refs.slider.getValue();
-      }
-    }
   }
 </script>
 

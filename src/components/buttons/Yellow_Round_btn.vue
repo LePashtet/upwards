@@ -1,5 +1,5 @@
 <template>
-    <button class="btn">{{text}}</button>
+  <button @click="handleClick" class="btn">{{text}}</button>
 </template>
 
 <script>
@@ -8,13 +8,18 @@
         props: {
           text: String,
         },
+      methods: {
+        handleClick() {
+          this.$emit('click');
+        }
+      }
     }
 </script>
 
 <style scoped>
  .btn{
    border: none;
-   border-radius: 20px;
+   border-radius: 25px;
    padding: 5px 40px;
    background-color:#FFA202;
    color: white;

@@ -2,10 +2,12 @@ import Vue from 'vue';
 import App from './App.vue';
 import router from './router';
 import store from './store';
+//TODO import {store} from './store';
 // import './registerServiceWorker';
 import PrettyCheckbox from 'pretty-checkbox-vue';
 
 Vue.use(PrettyCheckbox);
+
 
 Vue.config.productionTip = false;
 

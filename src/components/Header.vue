@@ -1,24 +1,34 @@
 <template>
     <div class="hd-wrp">
-      <a href="/"><p class="upwards">Upwards!</p></a>
+      <router-link to="/"><p class="upwards">Upwards!</p></router-link>
       <div class="hd-menu">
-        <p>Forum</p>
+        <router-link to="/forum"><p>Forum</p></router-link>
         <p>Study</p>
-        <a href="/event"><p>Events</p></a>
+        <router-link to="/event"><p>Events</p></router-link>
         <p>Motivation</p>
         <p>Team</p>
       </div>
-      <LogIn_btn v-show="this.$route.name !== 'registration' "  class="btn" text="Log In" link></LogIn_btn><!--TODO :click="this.$router.push({path:'log_in'})"-->
+      <LogIn_btn v-show="this.$route.name !== 'registration' " @click="goToLogin" class="btn" text="Log In" link></LogIn_btn><!--TODO :click="this.$router.push({path:'log_in'})"-->
     </div>
 </template>
 
 <script>
-  import LogIn_btn from '@/components/Yellow_Round_btn';
+  import LogIn_btn from '@/components/buttons/Yellow_Round_btn';
     export default {
         name: "Header",
         components: {
             LogIn_btn,
+        },
+      methods: {
+        goToLogin() {
+          this.$router.push({
+            name: 'registration',
+            params: {
+              id: 'log_in'
+            }
+          });
         }
+      }
 
     }
 </script>

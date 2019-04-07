@@ -35,4 +35,8 @@
     /*position: absolute;*/
     /*bottom: 0;*/
   }
+  body ::selection{
+    background:#ECECEC;
+  }
+
 </style>
