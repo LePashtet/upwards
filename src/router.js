@@ -10,19 +10,19 @@ export default new Router({
   routes: [
     {
       path: '/entrance/:id',
-      name: 'registration',
+      name: 'entrance',
       component: () => import('./views/entrance_page.vue'),
     },
     {
       path: '/entrance/log_in/confirm',
-      name: 'registration',
+      name: 'confirmation',
       component: () => import('./views/confirmation.vue'),
     },
-    {
-      path: '/about',
-      name: 'about',
-      component: () => import('./views/entrance_page.vue'),
-    },
+    // {
+    //   path: '/about',
+    //   name: 'about',
+    //   component: () => import('./views/entrance_page.vue'),
+    // },
     {
       path: '/event',
       name: 'event',
@@ -38,6 +38,11 @@ export default new Router({
       name: 'forum',
       component: () => import('./views/Forum.vue'),
     },
+    // {
+    //   path: '/canvas',
+    //   name: 'test',
+    //   component: () => import('./components/canvas.vue'),
+    // },
     // {
     //   path: '/about',
     //   name: 'about',

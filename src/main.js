@@ -4,10 +4,9 @@ import router from './router';
 import store from './store';
 //TODO import {store} from './store';
 // import './registerServiceWorker';
-import PrettyCheckbox from 'pretty-checkbox-vue';
+import VueKonva from 'vue-konva'
 
-Vue.use(PrettyCheckbox);
-
+Vue.use(VueKonva);
 
 Vue.config.productionTip = false;
 

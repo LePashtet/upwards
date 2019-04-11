@@ -5,13 +5,7 @@
       <img v-show='is_Answered===true' src="@/assets/img/forum/green-mark.svg" alt="Answered">
     </div>
     <div class="question-bottom">
-      <vue-tags-input
-        class="tags"
-        v-model="tag"
-        :tags="tags"
-        :autocomplete-items="filteredItems"
-        @tags-changed="newTags => tags = newTags"
-      />
+      <input-tag class="tags" placeholder="Enter" :value= "['sad','fds','dsf']"  :read-only="true" v-model="tags" :limit="5"></input-tag>
       <p class="time">Posted {{ time }} hours ago</p>
       <p class="answers">{{ answers }} answers</p>
       <p class="time">{{ followers }} People followed</p>
@@ -20,36 +14,24 @@
 </template>
 
 <script>
-  import VueTagsInput from '@johmun/vue-tags-input';
+  import InputTag from 'vue-input-tag'
 
   export default {
     name: "forum_question",
     components: {
-      VueTagsInput
+     InputTag
     },
     props: {
       name: String,
-      is_Answered: String,
-      time: String,
-      answers: String,
-      followers: String
+      is_Answered: Boolean,
+      time: Number,
+      answers: Number,
+      followers: Number
     //  TODO Числа
     },
     data() {
       return {
-        tag: '',
-        tags: [],
-        autocompleteItems: [{
-          text: 'Spain',
-        }, {
-          text: 'France',
-        }, {
-          text: 'USA',
-        }, {
-          text: 'Germany',
-        }, {
-          text: 'China',
-        }],
+        tags: ['vue',],
       };
     },
   }
@@ -84,7 +66,8 @@
     flex-direction: row;
     margin: 20px 0 0 0;
   }
-  .time{
+  .tags.vue-input-tag-wrapper {
+    border: none;
 
   }
 </style>

@@ -3,17 +3,10 @@
     <div class="forum-top">
       <addQuestion_btn class="ask_btn" text="Ask a question"></addQuestion_btn>
       <div>
-        <search class="search"></search>
+        <search v-model="search"></search>
         <div>
           <p class="trend">Trending:</p>
-          <input-tag v-model="tags"></input-tag>
-          <!--<vue-tags-input-->
-            <!--class="vue-tags-input"-->
-            <!--v-model="tag"-->
-            <!--:tags="tags"-->
-            <!--:autocomplete-items="filteredItems"-->
-            <!--@tags-changed="newTags => tags = newTags"-->
-          <!--/>-->
+          <input-tag v-on:keyup.enter="findByTag" class="tags" placeholder="Enter" :value="['sad','fds','dsf']" v-model="tags"></input-tag>
         </div>
       </div>
     </div>
@@ -22,27 +15,19 @@
         <myDisplayFilter></myDisplayFilter>
         <myDifficultyFilter></myDifficultyFilter>
       </div>
-      <div class="forum-question">
-        <question
-          followers="100"
-          answers="15"
-          time="3"
-          :is_Answered="true"
-          name="Aspernatur assumenda doloremque odit possimus quae repellendus, ullam voluptas? Facere qui, vitae!"></question>
-        <question
-          followers="100"
-          answers="15"
-          time="3"
-          :is_Answered="true"
-          name="Aspernatur assumenda doloremque odit possimus quae repellendus, ullam voluptas? Facere qui, vitae!"></question>
-        <question
-          followers="100"
-          answers="15"
-          time="3"
-          :is_Answered="true"
-          name="Aspernatur assumenda doloremque odit possimus quae repellendus, ullam voluptas? Facere qui, vitae!"></question>
 
+      <div v-show="!notFoundError" class="forum-question" v-for="question in results" >
+         <question
+          :followers="100"
+          :answers="15"
+          :time="1"
+          :is_Answered="true"
+          :name=question.text></question>
       </div>
+      <div v-show="notFoundError" class="forum-question">
+        <h1>Nothing Found</h1>
+      </div>
+
     </div>
   </div>
 </template>
@@ -56,7 +41,6 @@
   //TODO which is better
 
   import InputTag from 'vue-input-tag'
-  import VueTagsInput from '@johmun/vue-tags-input';
 
 
   export default {
@@ -66,34 +50,45 @@
       myDifficultyFilter,
       addQuestion_btn,
       search,
-      VueTagsInput,
       question,
       InputTag
     },
     data() {
       return {
-      //   tag: '',
-        tags: [],
-      //   autocompleteItems: [{
-      //     text: 'Spain',
-      //   }, {
-      //     text: 'France',
-      //   }, {
-      //     text: 'USA',
-      //   }, {
-      //     text: 'Germany',
-      //   }, {
-      //     text: 'China',
-      //   }],
+        tags: ['vuejs', 'js', 'php'],
+        search: null,
+        results: [],
+        notFoundError: false,
       };
     },
-    computed: {
-      filteredItems() {
-        return this.autocompleteItems.filter(i => {
-          return i.text.toLowerCase().indexOf(this.tag.toLowerCase()) !== -1;
+    //TODO опаздывает на 1 вызов
+    methods: {
+      find() {
+        console.log(this.notFoundError);
+        return new Promise((resolve) => setTimeout(() => resolve(),1000))
+        .then(() =>  {
+          console.log(this.results);
+          this.results.splice(0,this.results.length);
+          this.notFoundError = false;
         })
+        .then(() =>  {
+           this.$store.dispatch('getText', this.search);
+           this.results.push(this.$store.getters.RESPONSE);
+        })
+          .then(() =>  {
+            this.notFoundError = this.$store.getters.NOT_FOUND_ERROR;
+            console.log(this.results);
+          })
+      },
+    },
+    watch: {
+      search: function () {
+        this.find();
       }
     },
+    created(){
+      console.log(this.notFoundError);
+    }
   }
 
 </script>
@@ -105,7 +100,9 @@
     margin: 0 0 0 4.5vw;
 
   }
-
+  .forum-wrp{
+    min-height: 800px;
+  }
   .forum-top div {
     margin: 0 0 0 10vw;
   }
@@ -136,11 +133,27 @@
     font-weight: 600;
     width: max-content;
   }
-  .forum-body{
+
+  .forum-body {
+      display: flex;
+  }
+
+  .forum-question {
+    margin: 50px 0 0 7vw;
     display: flex;
+    flex-direction: column;
+    min-width: 500px;
   }
-  .forum-question{
-    margin: 0 0 0 6vw;
+
+  .tags.vue-input-tag-wrapper {
+    border: none;
+
   }
+
+  /*.tags.vue-input-tag-wrapper span {*/
+  /*background: rgba(0,135,203,0.28);*/
+  /*border-radius: 8px;*/
+  /*color: #0087cb;*/
+  /*}*/
 
 </style>

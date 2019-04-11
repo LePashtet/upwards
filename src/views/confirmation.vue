@@ -3,6 +3,7 @@
     <p class="firstStr">A code will be send to this email</p>
     <p>{{ email }}</p>
     <p>Please, check your inbox and confirm registration</p>
+    <btn @click="send()" text='send'></btn>
   </div>
 </template>
 
@@ -16,7 +17,16 @@
     },
     data() {
       return {
-        email: 'test@gmail.com',
+        email: 'testtext',
+      }
+    },
+    methods: {
+      send(){
+        this.$store.dispatch('sendText', this.email);
+        this.$store.dispatch('getText', 2).then(() => {
+          console.log( this.$store.getters.TEXT);
+        });
+
       }
     }
   }

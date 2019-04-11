@@ -29,11 +29,13 @@
     padding: 0;
   }
   .header{
-    margin-top: 22px
+    margin-top: 22px;
   }
   .footer{
-    /*position: absolute;*/
+    /*position: fixed;*/
+    /*left: 0;*/
     /*bottom: 0;*/
+    /*width: 100%;*/
   }
   body ::selection{
     background:#ECECEC;

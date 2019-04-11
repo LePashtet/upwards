@@ -21,15 +21,15 @@
         filter: [
           {
             name: 'Easy',
-            link: '@/assets/img/forum/difficulty_easy.svg'
+            link:  require('@/assets/img/forum/difficulty_easy.svg'),
           },
           {
             name: 'Medium',
-            link: '@/assets/img/forum/difficulty_medium.svg',
+            link:  require('@/assets/img/forum/difficulty_medium.svg'),
           },
           {
             name: 'You nerd or something?',
-            link: '@/assets/img/forum/difficulty_hard.svg'
+            link:  require('@/assets/img/forum/difficulty_hard.svg'),
           },
         ]
       }
@@ -53,6 +53,10 @@
   .cell{
     display: flex;
     flex-direction: row;
+  }
+  .cell img{
+    object-fit: contain;
+    align-self:flex-start;
   }
   .cell p {
     color: #595959;

@@ -10,11 +10,13 @@
   "dependencies": {
     "@johmun/vue-tags-input": "^2.0.1",
     "axios": "^0.18.0",
+    "konva": "^3.2.4",
     "pretty-checkbox-vue": "^1.1.9",
     "register-service-worker": "^1.5.2",
     "vue": "^2.6.6",
     "vue-axios": "^2.1.4",
     "vue-input-tag": "^2.0.5",
+    "vue-konva": "^2.0.4",
     "vue-router": "^3.0.1",
     "vue-slider-component": "^3.0.15",
     "vuex": "^3.0.1"

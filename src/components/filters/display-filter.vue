@@ -3,7 +3,7 @@
     <p class="header">Display:</p>
     <div class="cell" v-for="(item,key) in filter">
       <img :src=item.link alt="Level">
-      <p>{{ item.name }}</p>
+      <router-link :to="'/forum/'+ item.name"><p>{{ item.name }}</p></router-link>
     </div>
   </div>
 </template>
@@ -21,19 +21,19 @@
         filter: [
           {
             name: 'New',
-            link: '@/assets/img/forum/new.svg'
+            link: require('@/assets/img/forum/new.svg')
           },
           {
             name: 'Popular',
-            link: '@/assets/img/forum/fire.svg',
+            link:  require('@/assets/img/forum/fire.svg'),
           },
           {
             name: 'Unanswered',
-            link: '@/assets/img/forum/question.svg'
+            link:  require('@/assets/img/forum/question.svg'),
           },
           {
             name: 'Common',
-            link: "@/assets/img/forum/support.svg"
+            link:  require('@/assets/img/forum/support.svg')
           },
         ]
       }
@@ -57,6 +57,9 @@
   .cell{
     display: flex;
     flex-direction: row;
+  }
+  .cell img{
+    align-self:flex-start;
   }
   .cell p {
     color: #595959;

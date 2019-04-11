@@ -22,7 +22,7 @@
       methods: {
         goToLogin() {
           this.$router.push({
-            name: 'registration',
+            name: 'entrance',
             params: {
               id: 'log_in'
             }

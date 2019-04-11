@@ -3,45 +3,57 @@ import Vuex from 'vuex';
 import axios from 'axios';
 
 Vue.use(Vuex);
-
-export default new Vuex.Store({
+const forum = {
   state: {
-    text: null,
+    text: {},
+    notFoundError: false
   },
   getters: {
-    TEXT: state => {
+    RESPONSE: state => {
       return state.text;
+    },
+    NOT_FOUND_ERROR: state => {
+      return state.notFoundError;
     }
   },
   mutations: {
-      SEND_TEXT: (state, payload) => {
-     state.text = payload;
+    setNotFound:(state,payload)=>{
+      console.log("mutation");
+      state.notFoundError = payload;
     },
-
-   SAVE_TEXT: (state, payload) => {
-      state.text.push(payload);
+    SAVE_TEXT: (state, payload) => {
+      state.text = payload ;
     },
   },
 
   actions: {
-    async  getText ({ commit },payload) {
-      return await axios.get('https://upwards.cf/api/get', {
+    getText({commit}, payload) {
+      this.commit('setNotFound',false);
+      return axios.get('https://upwards.cf/api/get', {
         params: {
           id: payload
         }
       })
-        .then((response) =>{
+        .then((response) => {
           console.log(response);
-          commit('SAVE_TEXT', response.data.text);
+          console.log(response.data);
+          console.log(response.data.text);
+
+          commit('SAVE_TEXT', response.data);
         })
-        .catch((error) =>{
-          console.log('Get Error');
+        .catch((error) => {
+          console.log(Object.is(404, error.response.status));
+
+          if (Object.is(404, error.response.status)) {
+
+            this.commit('setNotFound',true);
+          }
           console.log(error.message);
         });
 
     },
 
-    async  sendText ({ commit },payload) {
+    async sendText({commit}, payload) {
       await axios.post('https://upwards.cf/api/post', {
         text: payload,
       })
@@ -49,13 +61,23 @@ export default new Vuex.Store({
           console.log(response.status);
         })
         .catch(function (error) {
+          console.log(error);
           console.log(error.message);
           console.log('Send Error');
         });
 
     },
   },
+};
+const errors = {
+  state: {
+    401:'You must LogIn to enter this page',
+  }
+};
+
+export default new Vuex.Store({
+  modules: {
+    forum: forum,
+    errors: errors,
+  }
 });
-// this.axios.get(api).then((response) => {
-//   console.log(response.data)
-// })

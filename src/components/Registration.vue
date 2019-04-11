@@ -9,10 +9,10 @@
       <input :type=item.type :placeholder=item.place>
     </div>
     <Blue_btn class="reg-btn" :text="'Become Upwordian'"></Blue_btn>
-    <p class="policy">By registering you accept our <router-link href="/terms_of_policy"><p>Terms of Policy</p></router-link></p>
+    <p class="policy">By registering you accept our <router-link to="/terms_of_policy">Terms of Policy</router-link>
     <p class="already_have">Already have an account?</p>
     <Yellow_btn :text="'Log In'"
-                @click="goToLogin()"></Yellow_btn>
+                @click="goToLogin"></Yellow_btn>
   </div>
 </template>
 

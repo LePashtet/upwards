@@ -1,7 +1,7 @@
 <template>
   <div class="guest-wrp">
-    <login v-show="this.$route.path==='/entrance/log_in'" class="login"></login>
-    <registration v-show="this.$route.path==='/entrance/register'" class="login"></registration>
+    <login v-show="this.$route.path === '/entrance/log_in'" class="login"></login>
+    <registration v-show="this.$route.path === '/entrance/register'" class="login"></registration>
   </div>
 </template>
 
@@ -9,11 +9,13 @@
   import login from '@/components/login.vue';
   import registration from '@/components/Registration.vue';
 
+
   export default {
     name: "Guest",
     components: {
       login,
-      registration
+      registration,
+
     }
   }
 </script>

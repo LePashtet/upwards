@@ -1,5 +1,7 @@
 <template>
   <div class="reg-wrp">
+    <geometry class="g_first" :width="350" :height="700"></geometry>
+    <geometry class="g_second" :width="350" :height="700"></geometry>
     <p>{{ this.$route.path }}</p>
     <div class="reg">
       <p>Log In</p>
@@ -18,6 +20,7 @@
 <script>
   import Blue_btn from '@/components/buttons/Blue_Round_btn.vue';
   import Yellow_btn from '@/components/buttons/Yellow_Round_btn.vue';
+  import geometry from '@/components/canvas.vue';
 
 
   export default {
@@ -25,6 +28,7 @@
     components: {
       Blue_btn,
       Yellow_btn,
+      geometry
     },
       data(){
           return{
@@ -55,7 +59,7 @@
         },
         goToConfirm() {
           this.$router.push({
-            name: 'entrance',
+            name: 'confirmation',
             params: {
               id: 'log_in/confirm'
             }
@@ -70,7 +74,21 @@
   .reg-wrp {
     width: max-content;
   }
+  .g_first{
+    position: absolute;
+    left: 0;
+    top: 100px;
+    width: 350px;
+    height: 700px;
 
+  }
+  .g_second{
+    position: absolute;
+    right: 0;
+    top: 100px;
+    width: 350px;
+    height: 700px;
+  }
   .reg p {
     width: max-content;
     font-family: "Open Sans", sans-serif;
