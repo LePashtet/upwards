@@ -1,19 +1,26 @@
 <template>
-  <div class="reg-wrp">
-    <p>{{ this.$route.path }}</p>
+  <div class="reg-wrp" @keyup.enter="registerUser">
     <div class="reg">
       <p>Registration</p>
     </div>
+    <div v-if="done===false" class="error">
+      <p>{{ this.resoult }}</p>
+    </div>
     <div class="reg-cell" v-for="item in reg_list">
       <img :src='item.img_path' alt="">
-      <input :type=item.type :placeholder=item.place>
+      <label>
+        <input v-model="item.value" :type=item.type :placeholder=item.place>
+      </label>
+      <p>{{ item.info}}</p>
     </div>
-    <Blue_btn class="reg-btn" :text="'Become Upwordian'"></Blue_btn>
-    <p class="policy">By registering you accept our <router-link to="/terms_of_policy">Terms of Policy</router-link>
+    <Blue_btn class="reg-btn" @click="registerUser" :text="'Become Upwordian'"></Blue_btn>
+    <p class="policy">By registering you accept our
+      <router-link to="/terms_of_policy">Terms of Policy</router-link>
     <p class="already_have">Already have an account?</p>
     <Yellow_btn :text="'Log In'"
                 @click="goToLogin"></Yellow_btn>
   </div>
+
 </template>
 
 <script>
@@ -31,23 +38,36 @@
         reg_list: [
           {
             name: 'Username',
+            value: null,
             place: 'HeyHop',
             type: 'text',
-            img_path: '@/assets/img/user.svg'
+            img_path: '@/assets/img/user.svg',
+            info: 'May be only letters, digits, and "_", "-"'
           },
           {
             name: 'Email',
+            value: null,
             place: 'example@email.com',
             type: "text",
             img_path: '@/assets/img/mail.svg'
           },
           {
             name: 'Password',
+            value: null,
             place: 'smth secret',
             type: 'password',
-            img_path: '@/assets/img/locked.svg'
+            img_path: '@/assets/img/locked.svg',
+            info: 'Must be between 8 and 20 symbols',
           }
         ],
+        myParams: {
+          name: null,
+          email: null,
+          password: null
+        },
+        done: null,
+        resoult: null
+
       }
     },
     methods: {
@@ -58,8 +78,27 @@
             id: 'log_in'
           }
         });
+      },
+      goToHome() {
+        this.$router.push({
+         path: '/myaccount/settings/info',
+        });
+      },
+      registerUser: function () {
+        this.myParams.name = this.reg_list[0].value;
+        this.myParams.email = this.reg_list[1].value;
+        this.myParams.password = this.reg_list[2].value;
+        this.$store.dispatch('register', this.myParams).then((response) => {
+          if (response.status === 201) {
+            this.goToHome();
+          }
+          else {
+            this.done = false;
+            this.resoult = response.data.error;
+          }
+        });
       }
-    }
+    },
   }
 </script>
 
@@ -76,13 +115,26 @@
     margin: 0 auto 30px auto;
 
   }
-
+  .error{
+    width: 400px;
+    font-family: "Open Sans", sans-serif;
+    font-size: 20px;
+    font-weight: 400;
+    margin: 0 auto 30px auto;
+  }
   .reg-cell {
     width: 400px;
     height: 50px;
     background: rgba(0, 148, 227, 0.29);
     border-radius: 8px;
-    margin-bottom: 15px;
+    margin-bottom: 30px;
+  }
+
+  .reg-cell p {
+    font-family: 'Abel', sans-serif;
+    font-size: 17px;
+    font-weight: 400;
+    margin: 5px;
   }
 
   input {

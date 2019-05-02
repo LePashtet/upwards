@@ -9,6 +9,11 @@ export default new Router({
   base: process.env.BASE_URL,
   routes: [
     {
+      path: '/adminpanel/:id',
+      name: 'admin',
+      component: () => import('./views/admin.vue'),
+    },
+    {
       path: '/entrance/:id',
       name: 'entrance',
       component: () => import('./views/entrance_page.vue'),
@@ -37,6 +42,16 @@ export default new Router({
       path: '/forum',
       name: 'forum',
       component: () => import('./views/Forum.vue'),
+    },
+    {
+      path: '/myaccount',
+      name: 'profile',
+      component: () => import('./views/Profile.vue'),
+    },
+    {
+      path: '/myaccount/settings/:id',
+      name: 'profile_settings',
+      component: () => import('./views/Profile_Settings.vue'),
     },
     // {
     //   path: '/canvas',

@@ -1,5 +1,5 @@
 <template>
-    <div class="hd-wrp">
+    <div class="hd-wrp" >
       <router-link to="/"><p class="upwards">Upwards!</p></router-link>
       <div class="hd-menu">
         <router-link to="/forum"><p>Forum</p></router-link>
@@ -8,7 +8,12 @@
         <p>Motivation</p>
         <p>Team</p>
       </div>
-      <LogIn_btn v-show="this.$route.name !== 'registration' " @click="goToLogin" class="btn" text="Log In" link></LogIn_btn><!--TODO :click="this.$router.push({path:'log_in'})"-->
+      <div v-show="logged===true" id="profile-link">
+        <router-link to="/myaccount"><img src="https://via.placeholder.com/30" alt=""></router-link>
+      </div>
+      <LogIn_btn v-show="this.$route.name !== 'entrance' && logged === false" @click="goToLogin" class="btn" text="Log In" link></LogIn_btn>
+      <LogIn_btn v-show="this.$route.name !== 'entrance' && logged === true" @click="logout" class="btn" text="Log Out" link></LogIn_btn>
+
     </div>
 </template>
 
@@ -19,7 +24,14 @@
         components: {
             LogIn_btn,
         },
+      data(){
+        return{
+          logged: false,
+          response:[],
+        }
+      },
       methods: {
+
         goToLogin() {
           this.$router.push({
             name: 'entrance',
@@ -27,8 +39,32 @@
               id: 'log_in'
             }
           });
-        }
-      }
+        },
+        logout(){
+          this.$store.dispatch('logOut').then((response)=>{
+            this.$router.push({path:'/'})
+          })
+            .catch((error)=>{
+              alert(error)
+            });
+          this.checkProfile();
+        },
+
+        checkProfile(){
+          this.$store.dispatch('isLogged').then((response)=>{
+            if(response.status===200) {
+              this.logged = true;
+            }
+          })
+            .catch(()=>{
+              this.logged = false;
+            })
+        },
+      },
+      mounted(){
+        this.checkProfile()
+      },
+      //TODO при логине вызывается оч часто
 
     }
 </script>
@@ -43,6 +79,7 @@
       display: flex;
       flex-direction: row;
       justify-content: space-around;
+      align-items: center;
     }
   .hd-menu{
     align-self: center;
@@ -63,7 +100,14 @@
   .btn{
     align-self: center;
   }
-  @media screen and (max-width: 768px){
+  #profile-link img{
+    border-radius: 100%;
+  }
+  #profile-link{
+    width: 30px;
+    height: 30px;
+  }
+  @media screen and (max-width: 1024px){
     .hd-wrp{
       flex-direction: column;
       justify-content: space-around;
@@ -72,5 +116,9 @@
     .upwards{
         margin-bottom: 35px;
     }
+    .btn{
+      margin: 20px 0 0 0;
+    }
+
   }
 </style>

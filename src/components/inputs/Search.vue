@@ -38,9 +38,5 @@ img{
     font-size:16px;
     font-weight: 400;
   }
-  input::placeholder {
-    font-family: 'Abel', sans-serif;
-    font-size:16px;
-    font-weight: 400;
-  }
+
 </style>

@@ -35,10 +35,10 @@
   import myDisplayFilter from '@/components/filters/display-filter.vue';
   import myDifficultyFilter from '@/components/filters/difficulty-filter.vue';
   import addQuestion_btn from '@/components/buttons/Blue_Round_btn.vue';
-  import search from '@/components/Search.vue';
+  import search from '@/components/inputs/Search.vue';
 
   import question from '@/components/forum_question.vue';
-  //TODO which is better
+
 
   import InputTag from 'vue-input-tag'
 
@@ -145,15 +145,10 @@
     min-width: 500px;
   }
 
-  .tags.vue-input-tag-wrapper {
-    border: none;
-
+  .vue-input-tag-wrapper .input-tag{
+    background-color: #cde69c;
+    border-radius: 2px;
+    border: 1px solid #d24a;
+    color: #303084;
   }
-
-  /*.tags.vue-input-tag-wrapper span {*/
-  /*background: rgba(0,135,203,0.28);*/
-  /*border-radius: 8px;*/
-  /*color: #0087cb;*/
-  /*}*/
-
 </style>

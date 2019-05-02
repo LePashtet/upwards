@@ -1,76 +1,65 @@
 <template>
   <div class="wrp">
-    <div class="evnt-top">
-      <p class="evnt-header">{{header}}</p>
-      <div class="panel">
-        <router-link to="#">
-          <div class="website">
-            <img src="@/assets/img/events/web.svg" alt="Web">
-            <p>Website</p>
+    <div @click="expands=false">
+      <div class="evnt-top">
+        <p class="evnt-header">{{header}}</p>
+        <div class="panel">
+          <div class="share">
+            <img src="@/assets/img/events/chain.svg" alt="Link">
+            <p>Share</p>
           </div>
-        </router-link> <!--TODO Bug-->
-
-        <!--<router-link to="#"><div class="share">-->
-        <!--<img src="@/assets/img/chain.svg" alt="Link">-->
-        <!--<p>Share</p>-->
-        <!--</div></router-link>-->
-        <!--<router-link to="#"><div class="save">-->
-        <!--<img src="@/assets/img/bookmark.svg" alt="Save">-->
-        <!--<p>Save</p>-->
-        <!--</div></router-link>-->
-        <div class="share">
-          <img src="@/assets/img/events/chain.svg" alt="Link">
-          <p>Share</p>
-        </div>
-        <div class="save">
-          <img src="@/assets/img/events/bookmark.svg" alt="Save">
-          <p>Save</p>
+          <!--TODO do not work-->
+          <div v-on:click="handleClick" class="save">
+            <img src="@/assets/img/events/bookmark.svg" alt="Save">
+            <p>Save</p>
+          </div>
         </div>
       </div>
+      <div class="topic">
+        <div class="location">
+          <img src="@/assets/img/events/location.svg" alt="Location">
+          <p>{{ location }}</p>
+        </div>
+        <div class="language">
+          <img src="@/assets/img/events/lab.svg" alt="Location">
+          <p>{{ topic }}</p>
+        </div>
+        <div class="level">
+          <img src="@/assets/img/events/bar-graph-progress.svg" alt="level">
+          <p>{{ level }}</p>
+        </div>
+        <div class="price">
+          <img src="@/assets/img/events/price.svg" alt="price">
+          <p>{{ price }}</p>
+        </div>
+      </div>
+      <hr>
+      <p class="description-name">Event Description</p>
+      <div class="description">
+        <p class="description-text">{{ description }}</p>
+      </div>
+      <div v-show="expands">
+        <p class="description-name ">Event Info</p>
+        <div class="event-f">
+          <div class="when">
+            <p>When</p>
+            <div>
+              <img src="@/assets/img/events/time.svg" alt="">
+              <p>{{date}}</p>
+            </div>
+          </div>
+          <div class="where">
+            <p>Where</p>
+            <div>
+              <img src="@/assets/img/events/location.svg" alt="">
+              <p>{{location}}</p>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-    <div class="topic">
-      <div class="location">
-        <img src="@/assets/img/events/location.svg" alt="Location">
-        <p>{{ location }}</p>
-      </div>
-      <div class="language">
-        <img src="@/assets/img/events/lab.svg" alt="Location">
-        <p>{{ topic }}</p>
-      </div>
-      <div class="level">
-        <img src="@/assets/img/events/bar-graph-progress.svg" alt="level">
-        <p>{{ level }}</p>
-      </div>
-      <div class="price">
-        <img src="@/assets/img/events/price.svg" alt="price">
-        <p>{{ price }}</p>
-      </div>
-    </div>
-    <hr>
-    <div class="description">
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A adipisci animi harum magni necessitatibus optio
-        provident quo temporibus ut voluptate? Aperiam culpa cum eius explicabo, facilis iste iure molestiae porro,
-        saepe soluta tenetur voluptate voluptatum! Accusamus animi autem corporis culpa dolor dolore dolores ea earum,
-        eveniet hic id illum mollitia neque nesciunt nobis omnis quasi reiciendis repellat, rerum tempora? Accusamus
-        asperiores aspernatur culpa delectus distinctio dolore dolores, ea eum hic in labore laboriosam nam nulla, optio
-        perspiciatis repellendus repudiandae sapiente sed sequi voluptatum. Accusantium commodi eligendi fuga id
-        incidunt ipsum neque placeat, porro quas, saepe totam vel voluptas. Eveniet explicabo ipsum iusto nam! Aliquam
-        blanditiis delectus distinctio praesentium, quo reiciendis voluptate. Debitis deleniti explicabo libero, maiores
-        minus molestias natus non nostrum pariatur quaerat, quidem sint sit tenetur? Accusamus ad amet architecto
-        asperiores at blanditiis distinctio, doloribus est excepturi facere facilis fugiat fugit ipsa magnam maiores
-        obcaecati quaerat quas, quis quod repudiandae rerum similique veniam voluptate! Asperiores at beatae dolores
-        facilis fugiat labore maiores qui quis repudiandae sapiente sequi similique, temporibus vel? Doloribus, hic,
-        odio! Aliquam asperiores, commodi dicta dolorem eos facere maxime quibusdam ullam vitae! Animi consectetur
-        consequuntur cumque dolor doloremque dolores eius enim est et eum expedita explicabo facere fuga fugiat fugit
-        harum illo, incidunt labore laudantium magni maiores natus odio omnis, optio pariatur perspiciatis placeat porro
-        provident quasi recusandae repellendus tenetur ullam voluptate? Alias aliquam aliquid architecto autem,
-        consectetur consequatur cum cumque debitis doloremque eligendi est et facere facilis fugiat harum id illo
-        incidunt ipsa laborum laudantium libero, mollitia nam nihil nisi nostrum odit officia possimus praesentium
-        quaerat, quis quod recusandae rem repellendus reprehenderit saepe tempora voluptatum? At corporis doloremque
-        fugiat illum incidunt iste minus, qui quod repellendus sequi tempora, voluptate. Ipsa maiores molestias omnis!
-        Accusantium, fugiat iusto laborum praesentium quisquam ratione rem sequi similique sint vero, voluptatum.</p>
-    </div>
-    <a href="#" class="expands">Expands</a>
+    <p v-if="!expands" @click="expands=!expands" class="expands">Expands</p>
+    <a :href="link" target="_blank" v-else class="expands">Visit Website</a>
   </div>
 </template>
 
@@ -82,8 +71,21 @@
       topic: String,
       location: String,
       level: String,
-      price: String,
+      price: Number,
       link: String,
+      date: String,
+      description:String,
+
+    },
+    data() {
+      return {
+        expands: false
+      }
+    },
+    methods: {
+      handleClick() {
+        this.$emit('myClick');
+      }
     }
   }
 </script>
@@ -94,13 +96,50 @@
     color: inherit;
   }
 
+  .description-name {
+    color: #0087cb;
+    font-family: "Open Sans", sans-serif;
+    font-size: 22px;
+    font-weight: 600;
+    margin-top: 10px;
+  }
+
   .wrp {
     cursor: default;
-    width: 980px;
-    height: 340px;
-    background-color: #ECECEC;
+    max-width: 980px;
+    height: max-content;
+    background-color: inherit;
     border: none;
     padding: 15px 46px 10px 43px;
+  }
+
+  .when {
+    font-family: "Open Sans", sans-serif;
+    font-size: 19px;
+    font-weight: 400;
+
+  }
+
+  .event-f {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .event-f div {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .event-f div div {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .where {
+    font-family: "Open Sans", sans-serif;
+    font-size: 19px;
+    font-weight: 400;
   }
 
   .evnt-header {
@@ -118,7 +157,6 @@
     color: #878787;
     display: flex;
     flex-direction: row;
-
   }
 
   .panel div {
@@ -161,9 +199,17 @@
   }
 
   .description {
-    overflow-y: scroll;
-    height: 200px;
-    margin-top: 10px;
+    overflow: auto;
+    min-height: 50px;
+    max-height: 400px;
+  }
+
+  .description-text {
+    color: #070707;
+    font-family: "Open Sans", sans-serif;
+    font-size: 19px;
+    font-weight: 400;
+    margin: 0 15px 0 20px;
   }
 
   .expands {

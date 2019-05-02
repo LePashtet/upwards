@@ -27,7 +27,6 @@
       time: Number,
       answers: Number,
       followers: Number
-    //  TODO Числа
     },
     data() {
       return {

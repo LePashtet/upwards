@@ -1,20 +1,9 @@
 <template>
     <div class="e-wrp">
-      <div class="calendar">
-        <vue-slider
-          v-model="slider.value"
-          :data="slider.data"
-          :marks="true"
-          :ref="slider"/>
-      </div>
-
-      <div class="e-body">
+        <div class="e-body">
         <my-filter class="filter"></my-filter>
         <div class="events">
-          <EventCell class="event" header='Upwards presentation' location='Odessa' topic='Presentation' level="Junior" price="Free" ></EventCell>
-          <EventCell class="event" header='Upwards presentation' location='Odessa' topic='Presentation'></EventCell>
-          <EventCell class="event" header='Upwards presentation' location='Odessa' topic='Presentation'></EventCell>
-          <EventCell class="event" header='Upwards presentation' location='Odessa' topic='Presentation'></EventCell>
+          <EventCell @myClick="save(event.id)" v-for="event in $store.getters.EVENTS" class="event" :description="event.description" :header='event.title' :location='event.location' :topic='event.themes' :level="event.level" :price="event.price" :date="event.time" :link="event.site"></EventCell>
         </div>
       </div>
     </div>
@@ -23,25 +12,33 @@
 <script>
   import EventCell from '@/components/Event.vue';
   import myFilter from '@/components/filters/Event-filter.vue';
-  import VueSlider from 'vue-slider-component';
-  import 'vue-slider-component/theme/antd.css';
-
 
   export default {
     name: "Events",
     components: {
       EventCell,
-      VueSlider,
       myFilter
     },
     data: function () {
       return {
-        slider: {
-          data: ['Feb','Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec','Jan'],
-          value:'',
-        },
+        myParams:{
+          pricemin: null,
+          pricemax: null,
+          level: null,
+          theme: null,
+        }
          }
     },
+    methods: {
+      save(id) {
+       this.$store.dispatch('saveEvents',id);
+      }
+    },
+    created(){
+      this.$store.dispatch('getEvents',this.myParams);
+      console.log('events',this.$store.getters.EVENTS);
+
+    }
   }
 </script>
 
@@ -56,10 +53,9 @@
     flex-direction: row;
   }
   .calendar{
-    margin: 52px 0 32px 30vw;
+    margin: 32px auto;
     width: 843px;
     height: 66px;
-
   }
 
   .filter{

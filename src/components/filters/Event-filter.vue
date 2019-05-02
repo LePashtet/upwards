@@ -1,27 +1,36 @@
 <template>
   <div class="filter-wrp">
-    <p class="header">Filter By</p>
-    <div class="cell" v-for="(item,key) in filter">
-      <p>{{ item.name }}</p>
-      <div v-for="item1 in filter[key].label" class="cell-filter">
-        <div class="pretty p-curve p-default ">
-          <input type="checkbox"/>
-          <div class="state p-primary">
-            <label class="cell-label">{{ item1 }}</label>
-          </div>
+    {{ changeParams }}
+    <p class="header">Filters</p>
+    <div>
+      <div class="cell disabled"  >
+      <p>{{ filter[0].name }}</p>
+      <div class="cell-filter" v-for="(item3,key) in filter[0].label" >
+        <p-radio class="p-default p-curve" :value="filter[0].value[key]==='All'? null : filter[0].value[key]" v-model="myParams.price" color="info-o">{{ item3 }}</p-radio>
+      </div>
+<!--TODO дергаются ивенты-->
+      </div>
+      <div class="cell">
+        <p>{{ filter[1].name }}</p>
+        <div class="cell-filter" v-for="(item2,key) in filter[1].label" >
+          <p-radio class="p-default p-curve" :value="item2==='All'? null : item2" v-model="myParams.theme" color="info-o">{{ item2 }}</p-radio>
+        </div>
+      </div>
+      <div class="cell">
+        <p>{{ filter[2].name }}</p>
+        <div class="cell-filter" v-for="(item1,key) in filter[2].label" >
+          <p-radio class="p-default p-curve" :value="item1==='Everyone'? null : item1" v-model="myParams.level" color="info-o">{{ item1 }}</p-radio>
         </div>
       </div>
     </div>
   </div>
 </template>
-
 <script>
-  import PrettyCheck from 'pretty-checkbox-vue/check';
+
 
   export default {
-    name: "Filter",
+    name: "myFilter",
     components: {
-      PrettyCheck
     },
     data() {
       return {
@@ -30,18 +39,44 @@
           // TODO  Location
           {
             name: 'Price',
-            label: ['All', 'Free', 'Up to 10$', '10$ to 50$', '50$ to 100$'],
+            label: ['All','Free', 'Up to 10$', '10$ to 50$', '50$ to 100$'],
+            value: [{
+              pricemin:0,
+              pricemax:0,
+            },{
+              pricemin:0.1,
+              pricemax:9,
+            },{
+              pricemin:10,
+              pricemax:49,
+            },
+            {
+              pricemin:50,
+              pricemax:100,
+            }]
           },
           {
             name: 'Theme',
-            label: ['All', 'Design', 'PHP', 'C#', 'Angular/React/Vue', 'Frontend', 'Node.js', 'Python', 'Java'],
+            label: ['All','Design', 'PHP', 'C#', 'Angular/React/Vue', 'Frontend', 'Node.js', 'Python', 'Java','Meetup', 'Competition','QA','Other'],
           },
           {
             name: 'Level',
             label: ['Everyone', 'Junior', 'Middle', 'Senior'],
           },
         ],
+        myParams:{
+          theme: null,
+          level: null,
+        }
       }
+    },
+    computed:{
+      changeParams() {
+        console.log(this.level);
+        console.log(this.theme);
+        // TODO not work
+        this.$store.dispatch('getEvents',this.myParams);
+      },
     }
   }
 </script>
@@ -58,6 +93,7 @@
     font-family: "Open Sans", sans-serif;
     font-size: 40px;
     font-weight: 700;
+    cursor: default;
   }
 
   .cell p {
@@ -72,7 +108,13 @@
     flex-direction: row;
 
   }
+  .disabled {
+    pointer-events: none;
 
+    /* for "disabled" effect */
+    opacity: 0.5;
+    background: #CCC;
+  }
   .pretty {
     margin-bottom: 10px;
   }

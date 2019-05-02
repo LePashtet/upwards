@@ -4,7 +4,14 @@ import router from './router';
 import store from './store';
 //TODO import {store} from './store';
 // import './registerServiceWorker';
+import PrettyCheckbox from 'pretty-checkbox-vue';
+
 import VueKonva from 'vue-konva'
+import VueSession from 'vue-session'
+
+
+Vue.use(PrettyCheckbox);
+Vue.use(VueSession);
 
 Vue.use(VueKonva);
 
