@@ -5,9 +5,9 @@
           <img :src="'https://upwards.cf/api/user/avatar?'+randomHash()" alt="">
         </div>
         <div class="info_name_inputs">
-          <input type="text" v-model="name">
-          <input type="text" v-model="tag">
-          <input type="text" v-model="surname">
+          <input type="text" placeholder="@tag" v-model="info.tag" >
+          <input type="text" placeholder="Name" v-model="info.name">
+          <input type="text" placeholder="Surname" v-model="info.surname">
         </div>
       </div>
       <btn class="save_btn" @click="save" text="Save"></btn>
@@ -38,24 +38,30 @@
           let o = Math.round(Math.random() * 1000000000000000000000).toString();
           return o;
         },
-        save(){
-          this.$store.dispatch('updateInfo',this.info).then((resp)=>{
-
-          }).catch((err)=>{
-            console.log(err);
-          })
+        save() {
+          this.$store.dispatch('updateInfo', this.info).then((resp) => {
+            if (resp.status===200){
+              alert("Info saved");
+              this.updatePage();
+            }else {
+              console.log("resp.error",resp);
+              alert(resp.error);
+              this.updatePage();
+            //  TODO респонс ввиде строки
+            }
+          });
         },
-        mounted(){
+        updatePage() {
           this.$store.dispatch('getProfile').then((resp)=>{
             this.info.name= resp.data.first_name;
             this.info.tag= resp.data.name;
             this.info.surname= resp.data.last_name;
-          }).catch((err)=>{
-            console.log(err);
           })
         }
-
-  }
+        },
+        mounted(){
+          this.updatePage();
+        }
     }
 </script>
 

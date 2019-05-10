@@ -90,6 +90,7 @@
         this.myParams.password = this.reg_list[2].value;
         this.$store.dispatch('register', this.myParams).then((response) => {
           if (response.status === 201) {
+            this.$store.dispatch('isLogged');
             this.goToHome();
           }
           else {

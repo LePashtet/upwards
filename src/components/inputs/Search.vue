@@ -1,7 +1,7 @@
 <template>
     <div class="search-wrp">
-      <input v-bind:value="value"
-             v-on:keyup.enter="$emit('input', $event.target.value)" type='text'  placeholder='Search questions, authors, themes … Well pretty much anything'>
+      <input
+        v-on:keyup.enter="$emit('input',$event.target.value); $event.target.value=''" type='text'  placeholder='Search questions, authors, themes … Well pretty much anything'>
       <img src='@/assets/img/forum/search.svg' alt="">
     </div>
 </template>
@@ -9,7 +9,11 @@
 <script>
     export default {
         name: "Search",
-       props: ['value'],
+       data(){
+         return{
+
+         }
+       }
     }
 </script>
 

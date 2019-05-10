@@ -3,7 +3,7 @@
     <p class="header">Display:</p>
     <div class="cell" v-for="(item,key) in filter">
       <img :src=item.link alt="Level">
-      <router-link :to="'/forum/'+ item.name"><p>{{ item.name }}</p></router-link>
+      <p @click="$store.dispatch('getBranches', item.query); $router.push({query:{type:item.query}})">{{ item.name }}</p>
     </div>
   </div>
 </template>
@@ -21,21 +21,31 @@
         filter: [
           {
             name: 'New',
-            link: require('@/assets/img/forum/new.svg')
+            link: require('@/assets/img/forum/new.svg'),
+            query:'new'
           },
           {
             name: 'Popular',
             link:  require('@/assets/img/forum/fire.svg'),
+            query:'popular'
           },
           {
             name: 'Unanswered',
             link:  require('@/assets/img/forum/question.svg'),
+            query:'unanswered'
           },
-          {
-            name: 'Common',
-            link:  require('@/assets/img/forum/support.svg')
-          },
+          // {
+          //   name: 'Common',
+          //   link:  require('@/assets/img/forum/support.svg'),
+          //   query:'coon'
+          // },
         ]
+      }
+    },
+    methods:{
+      handleClick(q) {
+        this.$emit('click',{id:q});
+      //  $router.push({path:'/forum',query: {id:item.query}})
       }
     }
   }
@@ -45,6 +55,7 @@
   @import '../../../node_modules/pretty-checkbox/dist/pretty-checkbox.min.css';
 
   .display-wrp {
+    cursor: default;
     display: flex;
     flex-direction: column;
   }
@@ -57,6 +68,7 @@
   .cell{
     display: flex;
     flex-direction: row;
+    cursor: pointer;
   }
   .cell img{
     align-self:flex-start;

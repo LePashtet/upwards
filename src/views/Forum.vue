@@ -1,33 +1,43 @@
 <template>
-  <div class="forum-wrp">
-    <div class="forum-top">
-      <addQuestion_btn class="ask_btn" text="Ask a question"></addQuestion_btn>
-      <div>
-        <search v-model="search"></search>
+  <div>
+    <div v-show="$route.path==='/forum/question'">
+      <branch></branch>
+    </div>
+    <div v-show="$route.path==='/forum/ask'">
+      <write></write>
+    </div>
+    <div v-show="$route.path==='/forum'" class="forum-wrp">
+      <div class="forum-top">
+        <addQuestion_btn @click="write" class="ask_btn"
+                         text="Ask a question"></addQuestion_btn>
         <div>
-          <p class="trend">Trending:</p>
-          <input-tag v-on:keyup.enter="findByTag" class="tags" placeholder="Enter" :value="['sad','fds','dsf']" v-model="tags"></input-tag>
+          <search @input="searchFunc"></search>
+          <div>
+            <p class="trend">Tags:</p>
+            <input-tag class="tags" placeholder="Enter" v-model="tags"></input-tag>
+          </div>
         </div>
       </div>
-    </div>
-    <div class="forum-body">
-      <div class="forum-panel">
-        <myDisplayFilter></myDisplayFilter>
-        <myDifficultyFilter></myDifficultyFilter>
+      <div class="forum-body">
+        <div class="forum-panel">
+          <myDisplayFilter></myDisplayFilter>
+          <myDifficultyFilter class="disabled"></myDifficultyFilter>
+        </div>
+        <div v-show="!notFoundError" class="forum-question">
+          <question
+            class="question"
+            v-for="question in $store.getters.BRANCHES"
+            :followers="question.users"
+            :answers="question.posts"
+            :is_Answered="question.posts > 0"
+            :name="question.title"
+            :id="question.id">
+          </question>
+        </div>
+        <div v-show="notFoundError" class="forum-question">
+          <h1>Nothing Found</h1>
+        </div>
       </div>
-
-      <div v-show="!notFoundError" class="forum-question" v-for="question in results" >
-         <question
-          :followers="100"
-          :answers="15"
-          :time="1"
-          :is_Answered="true"
-          :name=question.text></question>
-      </div>
-      <div v-show="notFoundError" class="forum-question">
-        <h1>Nothing Found</h1>
-      </div>
-
     </div>
   </div>
 </template>
@@ -36,10 +46,9 @@
   import myDifficultyFilter from '@/components/filters/difficulty-filter.vue';
   import addQuestion_btn from '@/components/buttons/Blue_Round_btn.vue';
   import search from '@/components/inputs/Search.vue';
-
-  import question from '@/components/forum_question.vue';
-
-
+  import question from '@/components/Forum/forum_question.vue';
+  import branch from '@/components/Forum/forum_view.vue';
+  import write from '@/components/Forum/Forum_write.vue';
   import InputTag from 'vue-input-tag'
 
 
@@ -51,7 +60,9 @@
       addQuestion_btn,
       search,
       question,
-      InputTag
+      InputTag,
+      write,
+      branch
     },
     data() {
       return {
@@ -63,34 +74,31 @@
     },
     //TODO опаздывает на 1 вызов
     methods: {
-      find() {
-        console.log(this.notFoundError);
-        return new Promise((resolve) => setTimeout(() => resolve(),1000))
-        .then(() =>  {
-          console.log(this.results);
-          this.results.splice(0,this.results.length);
-          this.notFoundError = false;
-        })
-        .then(() =>  {
-           this.$store.dispatch('getText', this.search);
-           this.results.push(this.$store.getters.RESPONSE);
-        })
-          .then(() =>  {
-            this.notFoundError = this.$store.getters.NOT_FOUND_ERROR;
-            console.log(this.results);
-          })
+      write() {
+        if (this.$store.getters.LOGGED === true) {
+          this.$router.push({path: '/forum/ask'});
+        }
+        else {
+          alert('You should logIn first');
+        }
       },
-    },
-    watch: {
-      search: function () {
-        this.find();
+      searchFunc(value) {
+        this.$router.push({query: null});
+        this.notFoundError = false;
+        this.$store.dispatch("search", value).then((resp) => {
+          if (resp.status !== 200) {
+            this.notFoundError = true;
+            setTimeout(() => {
+              this.notFoundError = false;
+            }, 1000)
+          }
+        })
       }
     },
-    created(){
-      console.log(this.notFoundError);
+    created() {
+      this.$router.push({query: null});
     }
   }
-
 </script>
 
 <style scoped>
@@ -100,9 +108,11 @@
     margin: 0 0 0 4.5vw;
 
   }
-  .forum-wrp{
+
+  .forum-wrp {
     min-height: 800px;
   }
+
   .forum-top div {
     margin: 0 0 0 10vw;
   }
@@ -118,10 +128,6 @@
     margin: 0 0 0 3vw;
   }
 
-  .vue-tags-input {
-    width: 400px;
-  }
-
   .ask_btn {
     align-self: start;
   }
@@ -135,20 +141,29 @@
   }
 
   .forum-body {
-      display: flex;
+    display: flex;
   }
 
   .forum-question {
-    margin: 50px 0 0 7vw;
+    height: max-content;
     display: flex;
     flex-direction: column;
     min-width: 500px;
   }
 
-  .vue-input-tag-wrapper .input-tag{
+  .forum-question .question {
+    margin: 50px 0 0 7vw;
+  }
+
+  .vue-input-tag-wrapper .input-tag {
     background-color: #cde69c;
     border-radius: 2px;
     border: 1px solid #d24a;
     color: #303084;
+  }
+
+  .disabled {
+    background: gray;
+
   }
 </style>

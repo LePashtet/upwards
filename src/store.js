@@ -5,79 +5,87 @@ import axios from 'axios';
 Vue.use(Vuex);
 const forum = {
   state: {
-    text: {},
-    notFoundError: false
+    branches:{}
   },
   getters: {
-    RESPONSE: state => {
-      return state.text;
+    BRANCHES: state => {
+      return state.branches;
     },
     NOT_FOUND_ERROR: state => {
       return state.notFoundError;
     }
   },
   mutations: {
-    setNotFound:(state,payload)=>{
-      console.log("mutation");
-      state.notFoundError = payload;
-    },
-    SAVE_TEXT: (state, payload) => {
-      state.text = payload ;
+    SET_BRANCHES: (state, payload) => {
+      state.branches = payload;
     },
   },
 
   actions: {
-    getText({commit}, payload) {
-      this.commit('setNotFound',false);
-      return axios.get('https://upwards.cf/api/get', {
-        params: {
-          id: payload
+    createQuest({commit}, payload) {
+      return axios.post('https://upwards.cf/api/forum/branch', {
+        title: payload.myHeader,
+        question: payload.myHTML,
+        tags: payload.tags,
+      })
+        .then((response) => {
+          alert('success');
+          return response
+        })
+        .catch((error) => {
+          console.log(error);
+          return error.response
+        });
+    },
+    getBranches({commit}, payload) {
+      return axios.get('https://upwards.cf/api/forum/branch/sort/'+ payload)
+        .then((response) => {
+          commit('SET_BRANCHES',response.data);
+          console.log("enter",payload);
+          return response
+        })
+        .catch((error) => {
+          return error.response
+        });
+
+    },
+    getBranch({commit}, payload) {
+      return axios.get('https://upwards.cf/api/forum/branch/sort/'+ payload)
+        .then((response) => {
+          commit('SET_BRANCHES',response.data);
+          console.log("enter",payload);
+          return response
+        })
+        .catch((error) => {
+          return error.response
+        });
+
+    },
+    search({commit},payload){
+      return axios.get('https://upwards.cf/api/forum/branch/search',{
+        params:{
+          q:payload
         }
       })
         .then((response) => {
-          console.log(response);
-          console.log(response.data);
-          console.log(response.data.text);
-          commit('SAVE_TEXT', response.data);
+          commit('SET_BRANCHES',response.data);
+          return response
         })
         .catch((error) => {
-          console.log(Object.is(404, error.response.status));
-
-          if (Object.is(404, error.response.status)) {
-
-            this.commit('setNotFound',true);
-          }
-          console.log(error.message);
+          commit('SET_BRANCHES',null);
+          return error.response
         });
-
-    },
-
-    async sendText({commit}, payload) {
-      await axios.post('https://upwards.cf/api/post', {
-        text: payload,
-      })
-        .then(function (response) {
-          console.log(response.status);
-        })
-        .catch(function (error) {
-          console.log(error);
-          console.log(error.message);
-          console.log('Send Error');
-        });
-
-    },
+    }
   },
 };
 const errors = {
   state: {
-    401:'You must LogIn to enter this page',
+    401: 'You must LogIn to enter this page',
   }
 };
 const login = {
   state: {
-    name: null,
-    email: null,
-    password: null
+    logged: false,
   },
   getters: {
     EMAIL: state => {
@@ -86,37 +94,37 @@ const login = {
     PASSWORD: state => {
       return state.password;
     },
-    NAME: state => {
-      return state.name;
+    LOGGED: state => {
+      return state.logged;
     },
   },
   mutations: {
     SET_NAME: (state, payload) => {
-      state.name = payload ;
+      state.name = payload;
     },
     SET_EMAIL: (state, payload) => {
-      state.email = payload ;
+      state.email = payload;
     },
-    SET_PASSWORD: (state, payload) => {
-      state.password = payload ;
+    SET_LOGGED: (state, payload) => {
+      state.logged = payload;
     },
   },
   actions: {
-    register({commit},payload) {
+    register({commit}, payload) {
       return axios.post('https://upwards.cf/api/auth/register', {
-          name: payload.name,
-          email: payload.email,
-          password: payload.password,
+        name: payload.name,
+        email: payload.email,
+        password: payload.password,
       })
         .then((response) => {
-            return response
+          return response
         })
         .catch((error) => {
           return error.response
         });
 
     },
-    logIn({commit},payload) {
+    logIn({commit}, payload) {
       return axios.post('https://upwards.cf/api/auth/login', {
         email: payload.email,
         password: payload.password,
@@ -125,12 +133,13 @@ const login = {
           return response
         })
         .catch((error) => {
-           return error.response
+          return error.response
         });
     },
-    logOut({commit},payload) {
+    logOut({commit}) {
       return axios.get('https://upwards.cf/api/auth/logout')
         .then((response) => {
+          commit('SET_LOGGED', false);
           return response
         })
         .catch((error) => {
@@ -138,10 +147,10 @@ const login = {
           return error.response
         });
     },
-    isLogged({commit},payload) {
+    isLogged({commit}) {
       return axios.get(' https://upwards.cf/api/auth/')
         .then((response) => {
-          return response
+          commit('SET_LOGGED', true);
         })
         .catch((error) => {
           return error.response
@@ -166,20 +175,20 @@ const events = {
   },
   mutations: {
     SET_pricemin: (state, payload) => {
-      state.pricemin = payload ;
+      state.pricemin = payload;
     },
     SET_pricemax: (state, payload) => {
-      state.pricemax = payload ;
+      state.pricemax = payload;
     },
     SET_theme: (state, payload) => {
-      state.theme = payload ;
+      state.theme = payload;
     },
     SET_level: (state, payload) => {
-      state.level = payload ;
+      state.level = payload;
     },
     //TODO WHYYYY???
     SET_EVENTS: (state, payload) => {
-      state.events = payload ;
+      state.events = payload;
       // Vue.set(state.events, payload);
     },
   },
@@ -202,9 +211,9 @@ const events = {
           return error.response
         });
     },
-    getEvents({commit,getters},payload) {
+    getEvents({commit, getters}, payload) {
       return axios.get('https://upwards.cf/api/events/all/sort', {
-        params:{
+        params: {
           // pricemin: payload.pricemin,
           // prisemax: payload.pricemax,
           themes: payload.theme,
@@ -223,8 +232,8 @@ const events = {
     },
     //TODO vuex не рабосий action
 
-    saveEvents({commit},payload) {
-      return axios.put('https://upwards.cf/api/events/save/'+ payload)
+    saveEvents({commit}, payload) {
+      return axios.put('https://upwards.cf/api/events/save/' + payload)
         .then((response) => {
           return response
         })
@@ -236,8 +245,7 @@ const events = {
   }
 };
 const profile = {
-  state: {
-  },
+  state: {},
   getters: {
     // EMAIL: state => {
     //   return state.email;
@@ -258,10 +266,11 @@ const profile = {
           return error.response
         });
     },
+
     updateInfo({commit}, payload) {
-      return axios.put('https://upwards.cf/api/user/profile/me',{
+      return axios.put('https://upwards.cf/api/user/profile/me', {
         name: payload.tag,
-        first_name:payload.name,
+        first_name: payload.name,
         last_name: payload.surname,
       })
         .then((response) => {
@@ -271,6 +280,18 @@ const profile = {
           return error.response
         });
     },
+    updateAbout({commit}, payload) {
+      return axios.put('https://upwards.cf/api/user/profile/about', {
+        about: payload.about,
+      })
+        .then((response) => {
+          return response
+        })
+        .catch((error) => {
+          return error.response
+        });
+    },
+
   },
 };
 

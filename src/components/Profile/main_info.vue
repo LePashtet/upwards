@@ -6,7 +6,7 @@
     <div class="m-info-wrp_content">
       <div class="m-info-wrp_content_name"><p>{{info.first_name}} {{info.last_name}}</p>
         <p>@{{info.name}}</p></div>
-      <div class="m-info-wrp_content_profession">Middle Front-end dev</div>
+      <div class="m-info-wrp_content_profession">{{ info.level}}</div>
       <div class="m-info-wrp_content_languages">
         <div class="m-info-wrp_content_languages_name">
           <p>Languages:</p>

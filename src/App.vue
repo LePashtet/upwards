@@ -1,16 +1,16 @@
 <template>
   <div id="app">
-    <header>
+    <div v-show="$route.path==='/'" class="bg">
+      <!--@/assets/img/welcome/welcome.png-->
       <Header  class="header"></Header>
-    </header>
     <main>
       <router-view/>
     </main>
-    <footer>
+    </div>
       <Footer class="footer"></Footer>
-    </footer>
   </div>
 </template>
+
 <script>
   import Header from '@/components/Header'
   import Footer from '@/components/Footer'
@@ -30,20 +30,31 @@
 </script>
 <style>
   #app{
-    height: available;
+    position: relative;
+    min-height: 100vh;
   }
   *{
     margin: 0;
     padding: 0;
   }
+  main{
+    min-height: 50vw ;
+    height: max-content;
+    padding-bottom: 100px;
+  }
+  .bg{
+    /*background: url(../../upwards_2.0/src/assets/img/welcome/welcome.png) no-repeat;*/
+    /*background-size: contain;*/
+    /*height: 66vw;*/
+  }
   .header{
-    margin-top: 22px;
+    padding-top: 25px;
   }
   .footer{
-    position: relative;
-    /*left: 0;*/
+    position: absolute;
     bottom: 0;
-    /*width: 100%;*/
+    width: 100%;
+    height: max-content;
   }
   body ::selection{
     background:#ECECEC;
@@ -53,6 +64,5 @@
     font-size:16px;
     font-weight: 400;
   }
-
 
 </style>

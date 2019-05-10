@@ -1,20 +1,38 @@
 <template>
-    <div class="hd-wrp" >
+  <div>
+    <div v-if="$route.path==='/'" class="hd-wrp" >
       <router-link to="/"><p class="upwards">Upwards!</p></router-link>
       <div class="hd-menu">
         <router-link to="/forum"><p>Forum</p></router-link>
-        <p>Study</p>
+        <a>Challenges</a>
         <router-link to="/event"><p>Events</p></router-link>
-        <p>Motivation</p>
-        <p>Team</p>
+        <a>Motivation</a>
+        <a>Team</a>
       </div>
-      <div v-show="logged===true" id="profile-link">
+      <div v-show=" $store.getters.LOGGED===true" class="profile-link">
         <router-link to="/myaccount"><img src="https://via.placeholder.com/30" alt=""></router-link>
       </div>
-      <LogIn_btn v-show="this.$route.name !== 'entrance' && logged === false" @click="goToLogin" class="btn" text="Log In" link></LogIn_btn>
-      <LogIn_btn v-show="this.$route.name !== 'entrance' && logged === true" @click="logout" class="btn" text="Log Out" link></LogIn_btn>
+      <LogIn_btn v-show="this.$route.name !== 'entrance' && $store.getters.LOGGED === false" @click="goToLogin" class="btn" text="Log In" link></LogIn_btn>
+      <LogIn_btn v-show="this.$route.name !== 'entrance' && $store.getters.LOGGED === true" @click="logout" class="btn" text="Log Out" link></LogIn_btn>
 
     </div>
+    <div v-else class="hd-wrp black" >
+    <router-link to="/"><p class="upwards">Upwards!</p></router-link>
+    <div class="hd-menu">
+      <router-link to="/forum"><p>Forum</p></router-link>
+      <a>Study</a>
+      <router-link to="/event"><p>Events</p></router-link>
+      <a>Motivation</a>
+      <a>Team</a>
+    </div>
+    <div v-show=" $store.getters.LOGGED===true" class="profile-link">
+      <router-link to="/myaccount"><img src="https://via.placeholder.com/30" alt=""></router-link>
+    </div>
+    <LogIn_btn v-show="this.$route.name !== 'entrance' && $store.getters.LOGGED === false" @click="goToLogin" class="btn" text="Log In" link></LogIn_btn>
+    <LogIn_btn v-show="this.$route.name !== 'entrance' && $store.getters.LOGGED === true" @click="logout" class="btn" text="Log Out" link></LogIn_btn>
+
+  </div>
+  </div>
 </template>
 
 <script>
@@ -42,27 +60,17 @@
         },
         logout(){
           this.$store.dispatch('logOut').then((response)=>{
+            this.$store.dispatch('isLogged');
             this.$router.push({path:'/'})
           })
             .catch((error)=>{
               alert(error)
             });
-          this.checkProfile();
         },
 
-        checkProfile(){
-          this.$store.dispatch('isLogged').then((response)=>{
-            if(response.status===200) {
-              this.logged = true;
-            }
-          })
-            .catch(()=>{
-              this.logged = false;
-            })
-        },
       },
       mounted(){
-        this.checkProfile()
+        this.$store.dispatch('isLogged');
       },
       //TODO при логине вызывается оч часто
 
@@ -71,9 +79,13 @@
 
 <style scoped>
   a{
-    text-decoration: none;
+  text-decoration: none;
+  color: white;
+}
+  .black a{
     color: black;
   }
+
     .hd-wrp{
       cursor: default;
       display: flex;
@@ -89,7 +101,7 @@
     font-size: 27px;
     font-weight: 400;
   }
-  .hd-menu p{
+  .hd-menu a{
     margin-left: 20px;
   }
   .upwards{
@@ -103,7 +115,7 @@
   #profile-link img{
     border-radius: 100%;
   }
-  #profile-link{
+  .profile-link{
     width: 30px;
     height: 30px;
   }

@@ -3,7 +3,7 @@
     <my-menu></my-menu>
     <div class="settings_content">
       <info v-if="this.$route.path==='/myaccount/settings/info'"></info>
-      <about></about>
+      <about v-if="this.$route.path==='/myaccount/settings/info'"></about>
     </div>
   </div>
 </template>

@@ -36,10 +36,15 @@ export default new Router({
     {
       path: '/',
       name: 'home',
-      component: Home,
+      component: () => import('./views/welcome.vue'),
     },
     {
       path: '/forum',
+      name: 'forum',
+      component: () => import('./views/Forum.vue'),
+    },
+    {
+      path: '/forum/ask',
       name: 'forum',
       component: () => import('./views/Forum.vue'),
     },
@@ -53,11 +58,11 @@ export default new Router({
       name: 'profile_settings',
       component: () => import('./views/Profile_Settings.vue'),
     },
-    // {
-    //   path: '/canvas',
-    //   name: 'test',
-    //   component: () => import('./components/canvas.vue'),
-    // },
+    {
+      path: '/test',
+      name: 'test',
+      component: () => import('./components/Forum/forum_view.vue'),
+    },
     // {
     //   path: '/about',
     //   name: 'about',

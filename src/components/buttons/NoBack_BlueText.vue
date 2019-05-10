@@ -1,6 +1,6 @@
 <template>
   <div class="btn-wrp">
-    <button class="save_btn">{{ text }}</button>
+    <button @click="handleClick" class="save_btn">{{ text }}</button>
   </div>
 </template>
 
@@ -9,6 +9,11 @@
         name: "NoBack_BlueText",
       props:{
           text:String,
+      },
+      methods: {
+        handleClick() {
+          this.$emit('click');
+        }
       }
     }
 </script>

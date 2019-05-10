@@ -4,9 +4,9 @@
         <p>About me</p>
       </div>
       <div class="about_text-area">
-        <textarea name="" id="" cols="30" rows="10"></textarea>
+        <textarea v-model="info.about" id="" cols="30" rows="10"></textarea>
       </div>
-      <btn class="save_btn" text="Save"></btn>
+      <btn class="save_btn" @click="save" text="Save"></btn>
     </div>
 </template>
 
@@ -17,6 +17,37 @@
         name: "settings_about",
       components:{
           btn
+      },
+      data(){
+        return{
+          resp: null,
+          info:{
+            about: null
+          },
+        }
+      },
+      methods:{
+        save() {
+          this.$store.dispatch('updateAbout', this.info).then((resp) => {
+            if (resp.status===200){
+              alert("Discription saved");
+              this.updatePage();
+            } else {
+              alert(resp.error);
+              this.updatePage();
+            }
+          })
+        },
+        updatePage() {
+          this.$store.dispatch('getProfile').then((resp)=>{
+            if (resp.status===200) {
+              this.info.about= resp.data.about;
+            }
+          })
+        }
+      },
+      mounted(){
+        this.updatePage();
       }
     }
 </script>

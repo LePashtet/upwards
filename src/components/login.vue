@@ -71,6 +71,7 @@
         this.$store.dispatch('logIn', this.myParams).then((response)=>{
           console.log(response);
           if (response.status === 200) {
+            this.$store.dispatch('isLogged');
             this.goToHome();
           }
           else {
