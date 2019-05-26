@@ -30,23 +30,22 @@
 </template>
 
 <script>
-  import current from '@/components/buttons/Blue_Round_mark.vue';
+import current from '@/components/buttons/Blue_Round_mark.vue';
 
-  export default {
-    name: "skills",
-    components:{
-      current
-    },
-    props:{
-      works:Array,
-      skills:Array
-    },
-    data() {
-      return {
-      }
-
-    }
-  }
+export default {
+  name: 'skills',
+  components: {
+    current,
+  },
+  props: {
+    works: Array,
+    skills: Array,
+  },
+  data() {
+    return {
+    };
+  },
+};
 </script>
 
 <style scoped>

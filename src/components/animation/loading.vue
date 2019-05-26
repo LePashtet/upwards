@@ -23,20 +23,20 @@
         }"
       />-->
 <script>
-  const width = window.innerWidth;
-  const height = window.innerHeight;
-  let vm = {};
-    export default {
-        name: "loading",
-      data() {
-        return {
-          stageSize: {
-            width: width,
-            height: height
-          }
-        };
-      }
-    }
+const width = window.innerWidth;
+const height = window.innerHeight;
+const vm = {};
+export default {
+  name: 'loading',
+  data() {
+    return {
+      stageSize: {
+        width,
+        height,
+      },
+    };
+  },
+};
 </script>
 
 <style scoped>

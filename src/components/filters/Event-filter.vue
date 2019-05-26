@@ -28,57 +28,57 @@
 <script>
 
 
-  export default {
-    name: "myFilter",
-    components: {
-    },
-    data() {
-      return {
-        filter: [
-          // TODO  fill this data with params from BD
-          // TODO  Location
-          {
-            name: 'Price',
-            label: ['All','Free', 'Up to 10$', '10$ to 50$', '50$ to 100$'],
-            value: [{
-              pricemin:0,
-              pricemax:0,
-            },{
-              pricemin:0.1,
-              pricemax:9,
-            },{
-              pricemin:10,
-              pricemax:49,
-            },
-            {
-              pricemin:50,
-              pricemax:100,
-            }]
+export default {
+  name: 'myFilter',
+  components: {
+  },
+  data() {
+    return {
+      filter: [
+        // TODO  fill this data with params from BD
+        // TODO  Location
+        {
+          name: 'Price',
+          label: ['All', 'Free', 'Up to 10$', '10$ to 50$', '50$ to 100$'],
+          value: [{
+            pricemin: 0,
+            pricemax: 0,
+          }, {
+            pricemin: 0.1,
+            pricemax: 9,
+          }, {
+            pricemin: 10,
+            pricemax: 49,
           },
           {
-            name: 'Theme',
-            label: ['All','Design', 'PHP', 'C#', 'Angular/React/Vue', 'Frontend', 'Node.js', 'Python', 'Java','Meetup', 'Competition','QA','Other'],
-          },
-          {
-            name: 'Level',
-            label: ['Everyone', 'Junior', 'Middle', 'Senior'],
-          },
-        ],
-        myParams:{
-          theme: null,
-          level: null,
-        }
-      }
-    },
-    computed:{
-      changeParams() {
-        console.log(this.level);
-        console.log(this.theme);
-        // TODO not work
-        this.$store.dispatch('getEvents',this.myParams);
+            pricemin: 50,
+            pricemax: 100,
+          }],
+        },
+        {
+          name: 'Theme',
+          label: ['All', 'Design', 'PHP', 'C#', 'Angular/React/Vue', 'Frontend', 'Node.js', 'Python', 'Java', 'Meetup', 'Competition', 'QA', 'Other'],
+        },
+        {
+          name: 'Level',
+          label: ['Everyone', 'Junior', 'Middle', 'Senior'],
+        },
+      ],
+      myParams: {
+        theme: null,
+        level: null,
       },
-    }
-  }
+    };
+  },
+  computed: {
+    changeParams() {
+      console.log(this.level);
+      console.log(this.theme);
+      // TODO not work
+      this.$store.dispatch('getEvents', this.myParams);
+    },
+  },
+};
 </script>
 
 <style scoped>

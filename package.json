@@ -1,6 +1,6 @@
 {
   "name": "Upwards!",
-  "version": "0.0.1",
+  "version": "0.0.5",
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
@@ -17,8 +17,8 @@
     "vue": "^2.6.6",
     "vue-axios": "^2.1.4",
     "vue-core-image-upload": "^2.4.11",
-    "vue-input-tag": "^2.0.5",
     "vue-konva": "^2.0.4",
+    "vue-lazyload": "^1.2.6",
     "vue-resize-directive": "^1.2.0",
     "vue-router": "^3.0.1",
     "vue-session": "^1.0.0",

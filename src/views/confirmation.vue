@@ -8,28 +8,27 @@
 </template>
 
 <script>
-  import btn from '@/components/buttons/Blue_Round_btn.vue';
+import btn from '@/components/buttons/Blue_Round_btn.vue';
 
-  export default {
-    name: "confirmation",
-    components: {
-      btn,
+export default {
+  name: 'confirmation',
+  components: {
+    btn,
+  },
+  data() {
+    return {
+      email: 'testtext',
+    };
+  },
+  methods: {
+    send() {
+      this.$store.dispatch('sendText', this.email);
+      this.$store.dispatch('getText', 2).then(() => {
+        console.log(this.$store.getters.TEXT);
+      });
     },
-    data() {
-      return {
-        email: 'testtext',
-      }
-    },
-    methods: {
-      send(){
-        this.$store.dispatch('sendText', this.email);
-        this.$store.dispatch('getText', 2).then(() => {
-          console.log( this.$store.getters.TEXT);
-        });
-
-      }
-    }
-  }
+  },
+};
 </script>
 
 <style scoped>

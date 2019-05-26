@@ -28,57 +28,55 @@
 
 </template>
 <script>
-  import InputTag from 'vue-input-tag'
+  import InputTag from '@/components/InputTag.vue';
 
-  import Blue_btn from '@/components/buttons/Blue_Round_btn.vue';
-
-
-  export default {
-        name: "Forum_write",
-    components:{
-          Blue_btn,
-      InputTag
-    },
-    data() {
-      return {
-
-        search: null,
-        results: [],
-        notFoundError: false,
-        info:{
-          myHTML: null,
-          myHeader: null,
-          tags: [],
-        },
-
-      };
-    },
-    methods:{
-          myClick(){
-            console.log(this.info.myHTML);
-            console.log(this.info.myHeader);
-            console.log(this.info.tags);
+import Blue_btn from '@/components/buttons/Blue_Round_btn.vue';
 
 
-            if(this.info.myHTML!==null && this.info.myHeader!== null && this.info.tags!== []){
-                console.log("we are in");
-                this.$store.dispatch('createQuest',this.info).then((resp)=>{
-                  if(resp.status===200){
-                      alert('success');
-                      this.$router.push({path:'/forum'})
-                  }
-                  else if(resp.status===401){
-                    alert('Login firstly');
-                    this.$router.push({path:'/entrance/log_in'})
-                  }
+export default {
+  name: 'Forum_write',
+  components: {
+    Blue_btn,
+    InputTag,
+  },
+  data() {
+    return {
 
-                })
-              }else{
-                alert("Fill all information");
-              }
+      search: null,
+      results: [],
+      notFoundError: false,
+      info: {
+        myHTML: null,
+        myHeader: null,
+        tags: [],
+      },
+
+    };
+  },
+  methods: {
+    myClick() {
+      console.log(this.info.myHTML);
+      console.log(this.info.myHeader);
+      console.log(this.info.tags);
+
+
+      if (this.info.myHTML !== null && this.info.myHeader !== null && this.info.tags !== []) {
+        console.log('we are in');
+        this.$store.dispatch('createQuest', this.info).then((resp) => {
+          if (resp.status === 200) {
+            alert('success');
+            this.$router.push({ path: '/forum' });
+          } else if (resp.status === 401) {
+            alert('Login firstly');
+            this.$router.push({ path: '/entrance/log_in' });
           }
-    }
-    }
+        });
+      } else {
+        alert('Fill all information');
+      }
+    },
+  },
+};
 </script>
 
 <style scoped>

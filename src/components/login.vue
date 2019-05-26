@@ -3,7 +3,7 @@
         <div class="regName">
           <p>Log In</p>
         </div>
-        <div class="error" v-if="done===false">{{ this.resoult }}</div>
+        <div class="error" v-if="done===false" v-html=" this.resoult"></div>
         <div class="reg-cell" v-for="item in log_list">
           <img :src='item.img_path' alt="">
           <input v-model="item.value" :type=item.type :placeholder=item.place>
@@ -18,70 +18,72 @@
 </template>
 
 <script>
-  import Blue_btn from '@/components/buttons/Blue_Round_btn.vue';
-  import Yellow_btn from '@/components/buttons/Yellow_Round_btn.vue';
-  export default {
-    name: "login",
-    components: {
-      Blue_btn,
-      Yellow_btn,
-    },
-    data() {
-      return {
-        log_list: [
-          {
-            name: 'Email',
-            place: 'test@email.com',
-            type: 'text',
-            img_path: '@/assets/img/user.svg'
-          },
-          {
-            name: 'Password',
-            place: 'smth secret',
-            type: 'password',
-            img_path: '@/assets/img/locked.svg'
-          }
-        ],
-        myParams: {
-          email: null,
-          password: null
+import Blue_btn from '@/components/buttons/Blue_Round_btn.vue';
+import Yellow_btn from '@/components/buttons/Yellow_Round_btn.vue';
+import user from "@/assets/img/user.svg";
+import locked from "@/assets/img/locked.svg";
+
+export default {
+  name: 'login',
+  components: {
+    Blue_btn,
+    Yellow_btn,
+  },
+  data() {
+    return {
+      log_list: [
+        {
+          name: 'Email',
+          place: 'test@email.com',
+          type: 'text',
+          img_path: user,
         },
-        done: null,
-        resoult: null,
-      }
+        {
+          name: 'Password',
+          place: '***************',
+          type: 'password',
+          img_path: locked,
+        },
+      ],
+      myParams: {
+        email: null,
+        password: null,
+      },
+      done: null,
+      resoult: null,
+    };
+  },
+  methods: {
+    goToRegistration() {
+      this.$router.push({
+        name: 'entrance',
+        params: {
+          id: 'register',
+        },
+      });
     },
-    methods: {
-      goToRegistration() {
-        this.$router.push({
-          name: 'entrance',
-          params: {
-            id: 'register'
-          }
-        });
-      },
-      goToHome() {
-        this.$router.push({
-          path: '/',
-        });
-      },
-      //ToDO don not work
-      loginUser() {
-        this.myParams.email = this.log_list[0].value;
-        this.myParams.password = this.log_list[1].value;
-        this.$store.dispatch('logIn', this.myParams).then((response)=>{
-          console.log(response);
-          if (response.status === 200) {
-            this.$store.dispatch('isLogged');
-            this.goToHome();
-          }
-          else {
-            this.done = false;
-             this.resoult = response.data.error;
-          }
-        });
-      },
+    goToHome() {
+      this.$router.push({
+        path: '/',
+      });
     },
-  }
+    // ToDO don not work
+    loginUser() {
+      this.myParams.email = this.log_list[0].value;
+      this.myParams.password = this.log_list[1].value;
+      this.$store.dispatch('logIn', this.myParams).then((response) => {
+        console.log(response);
+        if (response.status === 200) {
+          this.$store.dispatch('isLogged');
+          this.goToHome();
+        } else {
+          this.done = false;
+          this.resoult = response.data.error;
+        }
+      });
+    },
+  },
+};
 </script>
 
 <style scoped>
@@ -105,10 +107,15 @@
   }
   .reg-cell {
     width: 400px;
-    height: 50px;
     background: rgba(0, 148, 227, 0.29);
     border-radius: 8px;
     margin-bottom: 15px;
+  }
+  .reg-cell img{
+    margin: 1px;
+    width: 20%;
+    height:45px;
+    object-fit: contain;
   }
   input {
     line-height: 50px;
@@ -127,4 +134,3 @@
     font-weight: 400;
   }
 </style>
-

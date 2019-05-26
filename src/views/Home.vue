@@ -65,12 +65,12 @@
 </template>
 
 <script>
-  // @ is an alias to /src
+// @ is an alias to /src
 
-  export default {
-    name: 'home',
-    components: {},
-  };
+export default {
+  name: 'home',
+  components: {},
+};
 </script>
 <style scoped>
   #homepage {

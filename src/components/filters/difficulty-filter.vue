@@ -9,32 +9,32 @@
 </template>
 
 <script>
-  import PrettyCheck from 'pretty-checkbox-vue/check';
+import PrettyCheck from 'pretty-checkbox-vue/check';
 
-  export default {
-    name: "difficulty-filter",
-    components: {
-      PrettyCheck
-    },
-    data() {
-      return {
-        filter: [
-          {
-            name: 'Easy',
-            link:  require('@/assets/img/forum/difficulty_easy.svg'),
-          },
-          {
-            name: 'Medium',
-            link:  require('@/assets/img/forum/difficulty_medium.svg'),
-          },
-          {
-            name: 'You nerd or something?',
-            link:  require('@/assets/img/forum/difficulty_hard.svg'),
-          },
-        ]
-      }
-    }
-  }
+export default {
+  name: 'difficulty-filter',
+  components: {
+    PrettyCheck,
+  },
+  data() {
+    return {
+      filter: [
+        {
+          name: 'Easy',
+          link: require('@/assets/img/forum/difficulty_easy.svg'),
+        },
+        {
+          name: 'Medium',
+          link: require('@/assets/img/forum/difficulty_medium.svg'),
+        },
+        {
+          name: 'You nerd or something?',
+          link: require('@/assets/img/forum/difficulty_hard.svg'),
+        },
+      ],
+    };
+  },
+};
 </script>
 
 <style scoped>

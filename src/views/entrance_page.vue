@@ -14,42 +14,42 @@
 </template>
 
 <script>
-  import login from '@/components/login.vue';
-  import registration from '@/components/Registration.vue';
-  import geometry from '@/components/canvas.vue';
-  import resize from 'vue-resize-directive'
+import login from '@/components/login.vue';
+import registration from '@/components/Registration.vue';
+import geometry from '@/components/canvas.vue';
+import resize from 'vue-resize-directive';
 
 
-  export default {
-    name: "Guest",
-    components: {
-      login,
-      registration,
-      geometry
+export default {
+  name: 'Guest',
+  components: {
+    login,
+    registration,
+    geometry,
+  },
+  directives: {
+    resize,
+  },
+  data() {
+    return {
+      screenWidth: null,
+    };
+  },
+  methods: {
+    setWidth() {
+      this.screenWidth = this.$refs.wrp.offsetWidth;
     },
-    directives: {
-      resize,
+  },
+  mounted() {
+    this.setWidth();
+  },
+  computed: {
+    changeWidth() {
+      return this.screenWidth === null ? 500 : (this.screenWidth - 400) / 2;
     },
-    data() {
-      return {
-        screenWidth: null,
-      }
-    },
-    methods: {
-      setWidth(){
-        this.screenWidth = this.$refs.wrp.offsetWidth;
-      }
-    },
-    mounted(){
-      this.setWidth();
-    },
-    computed: {
-      changeWidth(){
-        return this.screenWidth===null ? 500:(this.screenWidth - 400) / 2 ;
-      }
-    },
+  },
 
-  }
+};
 </script>
 
 <style scoped>

@@ -26,41 +26,41 @@
 </template>
 
 <script>
-  import Blue_btn from '@/components/buttons/Blue_Round_btn.vue';
-  export default {
-    name: "admin",
-    components:{
-      Blue_btn,
-    },
-    data(){
-      return{
-        lang: ['Design', 'PHP', 'C#', 'Angular/React/Vue', 'Frontend', 'Node.js', 'Python', 'Java'],
-        levels: ['Everyone', 'Junior', 'Middle', 'Senior'],
-        myData: {
-          time: null,
-          price: null,
-          level: null,
-          location:null,
-          site:null,
-          title:null,
-          description:null,
-          themes:null,
-        },
-        complete: null,
-        response: null,
-      }
-    },
-    methods: {
-      sendEvent(){
-       this.$store.dispatch('createEvent',this.myData).then((response)=>{
-         this.response = response;
-         console.log("resp", this.response);
-         this.complete = response.status===200;
-       });
+import Blue_btn from '@/components/buttons/Blue_Round_btn.vue';
 
-      }
-    }
-  }
+export default {
+  name: 'admin',
+  components: {
+    Blue_btn,
+  },
+  data() {
+    return {
+      lang: ['Design', 'PHP', 'C#', 'Angular/React/Vue', 'Frontend', 'Node.js', 'Python', 'Java'],
+      levels: ['Everyone', 'Junior', 'Middle', 'Senior'],
+      myData: {
+        time: null,
+        price: null,
+        level: null,
+        location: null,
+        site: null,
+        title: null,
+        description: null,
+        themes: null,
+      },
+      complete: null,
+      response: null,
+    };
+  },
+  methods: {
+    sendEvent() {
+      this.$store.dispatch('createEvent', this.myData).then((response) => {
+        this.response = response;
+        console.log('resp', this.response);
+        this.complete = response.status === 200;
+      });
+    },
+  },
+};
 </script>
 
 <style scoped>

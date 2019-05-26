@@ -64,30 +64,30 @@
 </template>
 
 <script>
-  export default {
-    name: "Event",
-    props: {
-      header: String,
-      topic: String,
-      location: String,
-      level: String,
-      price: Number,
-      link: String,
-      date: String,
-      description:String,
+export default {
+  name: 'Event',
+  props: {
+    header: String,
+    topic: String,
+    location: String,
+    level: String,
+    price: Number,
+    link: String,
+    date: String,
+    description: String,
 
+  },
+  data() {
+    return {
+      expands: false,
+    };
+  },
+  methods: {
+    handleClick() {
+      this.$emit('myClick');
     },
-    data() {
-      return {
-        expands: false
-      }
-    },
-    methods: {
-      handleClick() {
-        this.$emit('myClick');
-      }
-    }
-  }
+  },
+};
 </script>
 
 <style scoped>
@@ -124,6 +124,7 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    margin-bottom: 20px;
   }
 
   .event-f div {

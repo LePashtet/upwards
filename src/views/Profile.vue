@@ -17,36 +17,36 @@
 </template>
 
 <script>
-  import info from '@/components/Profile/main_info.vue';
-  import skills from '@/components/Profile/skills.vue';
+import info from '@/components/Profile/main_info.vue';
+import skills from '@/components/Profile/skills.vue';
 
 
-  export default {
-    name: "Profile",
-    components: {
-      info,
-      skills
-    },
-    data() {
-      return {
-        info: null,
+export default {
+  name: 'Profile',
+  components: {
+    info,
+    skills,
+  },
+  data() {
+    return {
+      info: null,
+    };
+  },
+
+  mounted() {
+    this.$store.dispatch('getProfile').then((response) => {
+      if (response.status === 401) {
+        alert('Please logIn first');
+        setTimeout(() => {
+        }, 1500);
+        this.$router.push({ path: '/entrance/log_in' });
+      } else {
+        this.info = response.data;
+        this.info.languages = response.data.languages.split(', ');
       }
-    },
-
-    mounted() {
-      this.$store.dispatch('getProfile').then((response) => {
-        if(response.status===401){
-          alert("Please logIn first");
-          setTimeout(function(){
-          }, 1500);
-          this.$router.push({path: '/entrance/log_in'});
-        }else {
-          this.info = response.data;
-          this.info.languages=response.data.languages.split(", ");
-        }
-      });
-    }
-  }
+    });
+  },
+};
 </script>
 
 <style scoped>

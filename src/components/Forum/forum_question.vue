@@ -15,32 +15,32 @@
 </template>
 
 <script>
-  import InputTag from 'vue-input-tag'
+  import InputTag from '@/components/InputTag.vue';
 
-  export default {
-    name: "forum_question",
-    components: {
-     InputTag
+export default {
+  name: 'forum_question',
+  components: {
+    InputTag,
+  },
+  props: {
+    tags: Array,
+    name: String,
+    is_Answered: Boolean,
+    time: Number,
+    answers: Number,
+    followers: Number,
+    id: Number,
+  },
+  data() {
+    return {
+    };
+  },
+  methods: {
+    expands() {
+      this.$router.push({ path: '/forum/question', query: { id: this.id } });
     },
-    props: {
-      tags: Array,
-      name: String,
-      is_Answered: Boolean,
-      time: Number,
-      answers: Number,
-      followers: Number,
-      id: Number
-    },
-    data() {
-      return {
-      };
-    },
-    methods:{
-      expands(){
-
-      }
-    }
-  }
+  },
+};
 </script>
 
 <style scoped>

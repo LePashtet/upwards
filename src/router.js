@@ -49,6 +49,11 @@ export default new Router({
       component: () => import('./views/Forum.vue'),
     },
     {
+      path: '/forum/question',
+      name: 'forum',
+      component: () => import('./views/Forun_question.vue'),
+    },
+    {
       path: '/myaccount',
       name: 'profile',
       component: () => import('./views/Profile.vue'),
@@ -61,7 +66,7 @@ export default new Router({
     {
       path: '/test',
       name: 'test',
-      component: () => import('./components/Forum/forum_view.vue'),
+      component: () => import('./components/Profile/settings/settings_skills.vue'),
     },
     // {
     //   path: '/about',

@@ -1,8 +1,7 @@
 <template>
   <div id="app">
-    <div v-show="$route.path==='/'" class="bg">
-      <!--@/assets/img/welcome/welcome.png-->
-      <Header  class="header"></Header>
+    <div :class="$route.path==='/' ? 'bg' : ''">
+      <Header class="header"></Header>
     <main>
       <router-view/>
     </main>
@@ -12,22 +11,24 @@
 </template>
 
 <script>
-  import Header from '@/components/Header'
-  import Footer from '@/components/Footer'
-  export default {
-    name: "app",
-    components: {
-      Header,
-      Footer
-    },
-    data(){
-      return{
-      }
-    },
-    methods: {}
+import Header from '@/components/Header.vue';
+import Footer from '@/components/Footer.vue';
 
-  }
+export default {
+  name: 'app',
+  components: {
+    Header,
+    Footer,
+  },
+  data() {
+    return {
+    };
+  },
+  methods: {},
+
+};
 </script>
+
 <style>
   #app{
     position: relative;
@@ -43,12 +44,15 @@
     padding-bottom: 100px;
   }
   .bg{
-    /*background: url(../../upwards_2.0/src/assets/img/welcome/welcome.png) no-repeat;*/
-    /*background-size: contain;*/
-    /*height: 66vw;*/
+    background: url(../../upwards_2.0/src/assets/img/welcome/welcome.png) no-repeat;
+    background-size: contain;
+    height: 100%;
+    width: 100%;
   }
-  .header{
-    padding-top: 25px;
+  @media screen and (min-width: 1023px) {
+    .header{
+      padding-top: 25px;
+    }
   }
   .footer{
     position: absolute;
@@ -63,6 +67,11 @@
     font-family: 'Abel', sans-serif;
     font-size:16px;
     font-weight: 400;
+  }
+  @media screen and (min-width: 319px) {
+    .header{
+      padding-top: 15px;
+    }
   }
 
 </style>

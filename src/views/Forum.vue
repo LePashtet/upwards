@@ -1,8 +1,5 @@
 <template>
   <div>
-    <div v-show="$route.path==='/forum/question'">
-      <branch></branch>
-    </div>
     <div v-show="$route.path==='/forum/ask'">
       <write></write>
     </div>
@@ -31,7 +28,7 @@
             :answers="question.posts"
             :is_Answered="question.posts > 0"
             :name="question.title"
-            :id="question.id">
+            :id="question.branch_id">
           </question>
         </div>
         <div v-show="notFoundError" class="forum-question">
@@ -42,63 +39,71 @@
   </div>
 </template>
 <script>
-  import myDisplayFilter from '@/components/filters/display-filter.vue';
-  import myDifficultyFilter from '@/components/filters/difficulty-filter.vue';
-  import addQuestion_btn from '@/components/buttons/Blue_Round_btn.vue';
-  import search from '@/components/inputs/Search.vue';
-  import question from '@/components/Forum/forum_question.vue';
-  import branch from '@/components/Forum/forum_view.vue';
-  import write from '@/components/Forum/Forum_write.vue';
-  import InputTag from 'vue-input-tag'
+import myDisplayFilter from '@/components/filters/display-filter.vue';
+import myDifficultyFilter from '@/components/filters/difficulty-filter.vue';
+import addQuestion_btn from '@/components/buttons/Blue_Round_btn.vue';
+import search from '@/components/inputs/Search.vue';
+import question from '@/components/Forum/forum_question.vue';
+import write from '@/components/Forum/Forum_write.vue';
+import InputTag from '@/components/InputTag.vue';
 
 
-  export default {
-    name: "Forum",
-    components: {
-      myDisplayFilter,
-      myDifficultyFilter,
-      addQuestion_btn,
-      search,
-      question,
-      InputTag,
-      write,
-      branch
-    },
-    data() {
-      return {
-        tags: ['vuejs', 'js', 'php'],
-        search: null,
-        results: [],
-        notFoundError: false,
-      };
-    },
-    //TODO опаздывает на 1 вызов
-    methods: {
-      write() {
-        if (this.$store.getters.LOGGED === true) {
-          this.$router.push({path: '/forum/ask'});
-        }
-        else {
-          alert('You should logIn first');
-        }
-      },
-      searchFunc(value) {
-        this.$router.push({query: null});
-        this.notFoundError = false;
-        this.$store.dispatch("search", value).then((resp) => {
-          if (resp.status !== 200) {
-            this.notFoundError = true;
-            setTimeout(() => {
-              this.notFoundError = false;
-            }, 1000)
-          }
-        })
+export default {
+  name: 'Forum',
+  components: {
+    myDisplayFilter,
+    myDifficultyFilter,
+    addQuestion_btn,
+    search,
+    question,
+    InputTag,
+    write,
+  },
+  data() {
+    return {
+      tags: ['vuejs', 'js', 'php'],
+      search: null,
+      results: [],
+      notFoundError: false,
+    };
+  },
+  // TODO опаздывает на 1 вызов
+  methods: {
+    write() {
+      if (this.$store.getters.LOGGED === true) {
+        this.$router.push({ path: '/forum/ask' });
+      } else {
+        alert('You should logIn first');
       }
     },
-    created() {
-      this.$router.push({query: null});
-    }
-  }
+    searchFunc(value) {
+      this.$router.push({ query: null });
+      this.notFoundError = false;
+      this.$store.dispatch('search', value).then((resp) => {
+        if (resp.status !== 200) {
+          this.notFoundError = true;
+          setTimeout(() => {
+            this.notFoundError = false;
+          }, 1000);
+        }
+      });
+    },
+  },
+  created() {
+    this.$router.push({ query: null });
+    this.$store.dispatch('getBranches', 'popular').then((resp) => {
+      if (resp.status !== 200) {
+        this.notFoundError = true;
+        setTimeout(() => {
+          this.notFoundError = false;
+        }, 1000);
+      }
+      else{
+        this.$router.push({query:{type:'popular'}})
+      }
+    });
+  },
+};
 </script>
 
 <style scoped>
@@ -164,6 +169,14 @@
 
   .disabled {
     background: gray;
-
+  }
+  .vue-input-tag-wrapper{
+    border: none;
+  }
+  .vue-input-tag-wrapper span {
+    border: none;
+    color: deeppink;
+    background-color: white;
+    font-size: 16px;
   }
 </style>

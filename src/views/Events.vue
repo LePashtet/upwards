@@ -10,36 +10,35 @@
 </template>
 
 <script>
-  import EventCell from '@/components/Event.vue';
-  import myFilter from '@/components/filters/Event-filter.vue';
+import EventCell from '@/components/Event.vue';
+import myFilter from '@/components/filters/Event-filter.vue';
 
-  export default {
-    name: "Events",
-    components: {
-      EventCell,
-      myFilter
+export default {
+  name: 'Events',
+  components: {
+    EventCell,
+    myFilter,
+  },
+  data() {
+    return {
+      myParams: {
+        pricemin: null,
+        pricemax: null,
+        level: null,
+        theme: null,
+      },
+    };
+  },
+  methods: {
+    save(id) {
+      this.$store.dispatch('saveEvents', id);
     },
-    data: function () {
-      return {
-        myParams:{
-          pricemin: null,
-          pricemax: null,
-          level: null,
-          theme: null,
-        }
-         }
-    },
-    methods: {
-      save(id) {
-       this.$store.dispatch('saveEvents',id);
-      }
-    },
-    created(){
-      this.$store.dispatch('getEvents',this.myParams);
-      console.log('events',this.$store.getters.EVENTS);
-
-    }
-  }
+  },
+  created() {
+    this.$store.dispatch('getEvents', this.myParams);
+    console.log('events', this.$store.getters.EVENTS);
+  },
+};
 </script>
 
 <style scoped>

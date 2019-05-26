@@ -1,7 +1,7 @@
 <template>
   <div class="m-info-wrp">
     <div class="m-info-wrp_avatar">
-      <img :src="'https://upwards.cf/api/user/avatar?'+randomHash()" alt="">
+      <img :src="'https://upwards.cf/api/user/avatar?size=200'" alt="">
     </div>
     <div class="m-info-wrp_content">
       <div class="m-info-wrp_content_name"><p>{{info.first_name}} {{info.last_name}}</p>
@@ -17,39 +17,39 @@
         </div>
 
       <div class="m-info-wrp_content_panel" v-if="false">
-          <div class="-info-wrp_content_panel_add">
-            <img src="@/assets/img/profile/addtoteam.svg" alt="">
-            <p>Add to team</p>
+          <div @mouseover='over=1' @mouseout='over=0' class="info-wrp_content_panel_add">
+            <img v-show="over===1" src="@/assets/img/profile/addtoteam.svg" alt="">
+            <p :style="{color: over===1? 'black':'#FFA202'}">Add to team</p>
           </div>
-        <div class="-info-wrp_content_panel_message">
-          <img src="@/assets/img/profile/chat.svg" alt="">
-          <p>Send Message</p>
+        <div @mouseover='over=2' @mouseout='over=0' class="info-wrp_content_panel_message">
+          <img v-show="over===2" src="@/assets/img/profile/chat.svg" alt="">
+          <p :style="{color: over===2? 'black':'#24A8AC'}">Send Message</p>
         </div>
-        <div class="-info-wrp_content_panel_add">
-          <img src="@/assets/img/profile/bookmark.svg" alt="">
-          <p>Bookmark</p>
+        <div @mouseover='over=3' @mouseout='over=0' class="info-wrp_content_panel_add">
+          <img v-show="over===3" src="@/assets/img/profile/bookmark.svg" alt="">
+          <p :style="{color: over===3? 'black':'#32ADB1'}">Bookmark</p>
         </div>
-        <div class="-info-wrp_content_panel_add">
-          <img src="@/assets/img/profile/report.svg" alt="">
-          <p>Report @reginaPT</p>
+        <div @mouseover='over=4' @mouseout='over=0' class="info-wrp_content_panel_add">
+          <img v-show="over===4" src="@/assets/img/profile/report.svg" alt="">
+          <p :style="{color: over===4? 'black':'#00A03E'}">Report @reginaPT</p>
         </div>
       </div>
       <div class="m-info-wrp_content_panel" v-else>
-        <router-link to="/myaccount/settings/info"><div class="-info-wrp_content_panel_add">
+        <router-link  to="/myaccount/settings/info"><div @mouseover='over=1' @mouseout='over=0' class="-info-wrp_content_panel_add">
           <img src="@/assets/img/profile/settings.svg" alt="">
-          <p>Settings</p>
+          <p :style="{color: over!==1 ? 'black':'#FFA202'}">Settings</p>
         </div></router-link>
-        <div class="-info-wrp_content_panel_add">
+        <div @mouseover='over=2' @mouseout='over=0' class="-info-wrp_content_panel_add">
           <img src="@/assets/img/profile/bookmark.svg" alt="">
-          <p>Saved</p>
+          <p :style="{color: over!==2? 'black':'#24A8AC'}">Saved</p>
         </div>
-        <div class="-info-wrp_content_panel_add">
+        <div @mouseover='over=3' @mouseout='over=0' class="-info-wrp_content_panel_add">
           <img src="@/assets/img/profile/chat.svg" alt="">
-          <p>Messages</p>
+          <p :style="{color: over!==3? 'black':'#32ADB1'}">Messages</p>
         </div>
-        <div class="-info-wrp_content_panel_add">
+        <div @mouseover='over=4' @mouseout='over=0' class="-info-wrp_content_panel_add">
           <img src="@/assets/img/profile/team.svg" alt="">
-          <p>My team</p>
+          <p :style="{color: over!==4? 'black':'#00A03E'}">My team</p>
         </div>
       </div>
     </div>
@@ -57,23 +57,24 @@
 </template>
 
 <script>
-  export default {
-    name: "main_info",
-    props:{
-      info: Object
+export default {
+  name: 'main_info',
+  props: {
+    info: Object,
+  },
+  data() {
+    return {
+      over:0
+    };
+  },
+  methods: {
+    randomHash() {
+      const o = Math.round(Math.random() * 1000000000000000000000).toString();
+      return o;
     },
-    data(){
-      return{}
-    },
-    methods:{
-      randomHash(){
-        let o = Math.round(Math.random()*1000000000000000000000).toString();
-        return o;
-      }
-    }
-  }
+  },
+};
 </script>
-
 <style scoped>
   .m-info-wrp_content_name {
     font-family: "Open Sans";
@@ -123,6 +124,9 @@
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+  }
+  .m-info-wrp_content_panel a{
+    text-decoration: none;
   }
   .m-info-wrp_content_panel div{
     display: flex;

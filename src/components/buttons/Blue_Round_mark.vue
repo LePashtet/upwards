@@ -5,12 +5,12 @@
 </template>
 
 <script>
-    export default {
-        name: "Blue_Round_mark",
-      props:{
-          text:String,
-      }
-    }
+export default {
+  name: 'Blue_Round_mark',
+  props: {
+    text: String,
+  },
+};
 </script>
 
 <style scoped>

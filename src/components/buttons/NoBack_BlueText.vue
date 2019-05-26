@@ -5,17 +5,17 @@
 </template>
 
 <script>
-    export default {
-        name: "NoBack_BlueText",
-      props:{
-          text:String,
-      },
-      methods: {
-        handleClick() {
-          this.$emit('click');
-        }
-      }
-    }
+export default {
+  name: 'NoBack_BlueText',
+  props: {
+    text: String,
+  },
+  methods: {
+    handleClick() {
+      this.$emit('click');
+    },
+  },
+};
 </script>
 
 <style scoped>

@@ -11,9 +11,9 @@
 </template>
 
 <script>
-    export default {
-        name: "Footer"
-    }
+export default {
+  name: 'Footer',
+};
 </script>
 
 <style scoped>
@@ -21,6 +21,15 @@
     text-decoration: none;
     color: inherit;
   }
+  /*@media screen and (max-width: 1023px){*/
+    /*.ft-wrp{*/
+      /*flex-direction: column;*/
+    /*}*/
+    /*.ft-menu{*/
+      /*display: flex;*/
+      /*flex-direction: column;*/
+    /*}*/
+  /*}*/
   .ft-wrp{
     width: 100%;
     cursor: default;
@@ -47,5 +56,11 @@
     font-size: 22px;
     font-weight: 400;
     margin-left: 52px;
+  }
+  @media screen and (max-width: 1023px) {
+    .ft-menu p{
+      font-size: 14px;
+      margin-left: 25px;
+    }
   }
 </style>

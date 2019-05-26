@@ -14,61 +14,73 @@
 </template>
 
 <script>
-  export default {
-    name: "settings_menu",
-    data() {
-      return {
-        settings: [{name: 'Basic Info', route: '/myaccount/settings/info'},
-          {name: 'Personalization', route: '/myaccount/settings/personalization'},
-          {name: 'Security', route: '/myaccount/settings/secure'},
-          {name: 'Privacy', route: '/myaccount/settings/privacy'},
-          {name: 'Notification', route: '/myaccount/settings/notifications'},
-          {name: 'Blacklist', route: '/myaccount/settings/blacklist'}],
-        styles: [
-          {activeColor: '', fontSize: '', radius: '', color: '', height: ''},
-          {activeColor: '', fontSize: '', radius: '', color: '', height: ''},
-          {activeColor: '', fontSize: '', radius: '', color: '', height: ''},
-          {activeColor: '', fontSize: '', radius: '', color: '', height: ''},
-          {activeColor: '', fontSize: '', radius: '', color: '', height: ''},
-          {activeColor: '', fontSize: '', radius: '', color: '', height: ''}
-        ]
-      }
-    },
-    methods: {
-      click(key) {
-        for (let i = 0; i < this.styles.length; i++) {
-          if (i === key) {
-            this.styles[key].activeColor = 'white';
-            this.styles[key].fontSize = 30;
-            this.styles[key].radius = 43;
-            this.styles[key].color = '#0087cb';
-            this.styles[key].height = 40;
-          } else {
-            this.styles[i].activeColor = '';
-            this.styles[i].fontSize = '';
-            this.styles[i].radius = '';
-            this.styles[i].color = '';
-            this.styles[i].height = '';
-          }
+export default {
+  name: 'settings_menu',
+  data() {
+    return {
+      settings: [{ name: 'Basic Info', route: '/myaccount/settings/info' },
+        { name: 'Personalization', route: '/myaccount/settings/personalization' },
+        { name: 'Security', route: '/myaccount/settings/secure' },
+        { name: 'Privacy', route: '/myaccount/settings/privacy' },
+        { name: 'Notification', route: '/myaccount/settings/notifications' },
+        { name: 'Blacklist', route: '/myaccount/settings/blacklist' }],
+      styles: [
+        {
+          activeColor: '', fontSize: '', radius: '', color: '', height: '',
+        },
+        {
+          activeColor: '', fontSize: '', radius: '', color: '', height: '',
+        },
+        {
+          activeColor: '', fontSize: '', radius: '', color: '', height: '',
+        },
+        {
+          activeColor: '', fontSize: '', radius: '', color: '', height: '',
+        },
+        {
+          activeColor: '', fontSize: '', radius: '', color: '', height: '',
+        },
+        {
+          activeColor: '', fontSize: '', radius: '', color: '', height: '',
+        },
+      ],
+    };
+  },
+  methods: {
+    click(key) {
+      for (let i = 0; i < this.styles.length; i++) {
+        if (i === key) {
+          this.styles[key].activeColor = 'white';
+          this.styles[key].fontSize = 30;
+          this.styles[key].radius = 43;
+          this.styles[key].color = '#0087cb';
+          this.styles[key].height = 40;
+        } else {
+          this.styles[i].activeColor = '';
+          this.styles[i].fontSize = '';
+          this.styles[i].radius = '';
+          this.styles[i].color = '';
+          this.styles[i].height = '';
         }
       }
     },
-    mounted() {
-      if (this.$route.path === '/myaccount/settings/info') {
-        this.click(0);
-      } else if (this.$route.path === '/myaccount/settings/personalization') {
-        this.click(1);
-      } else if (this.$route.path === '/myaccount/settings/secure') {
-        this.click(2);
-      } else if (this.$route.path === '/myaccount/settings/privacy') {
-        this.click(3);
-      } else if (this.$route.path === '/myaccount/settings/notifications') {
-        this.click(4);
-      } else if (this.$route.path === '/myaccount/settings/blacklist') {
-        this.click(5);
-      }
+  },
+  mounted() {
+    if (this.$route.path === '/myaccount/settings/info') {
+      this.click(0);
+    } else if (this.$route.path === '/myaccount/settings/personalization') {
+      this.click(1);
+    } else if (this.$route.path === '/myaccount/settings/secure') {
+      this.click(2);
+    } else if (this.$route.path === '/myaccount/settings/privacy') {
+      this.click(3);
+    } else if (this.$route.path === '/myaccount/settings/notifications') {
+      this.click(4);
+    } else if (this.$route.path === '/myaccount/settings/blacklist') {
+      this.click(5);
     }
-  }
+  },
+};
 </script>
 
 <style scoped>
