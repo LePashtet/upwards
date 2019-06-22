@@ -27,11 +27,12 @@ export default {
     btn,
     skill
   },
+  props:{
+    skills:Array
+  },
   data(){
     return{
-      skills:[{name:'vue',rate:3}],
       name: '',
-
     }
   },
   methods:{
@@ -55,7 +56,7 @@ export default {
     height: max-content;
     max-width: 500px ;
     border-bottom: 2px #595959 solid;
-    padding: 0 0 20px  0;
+    padding: 20px 0 20px  0;
   }
   .skills_top{
     display: flex;

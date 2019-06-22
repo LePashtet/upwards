@@ -256,8 +256,8 @@ const profile = {
         .catch(error => error.response);
     },
     updateSkills({ commit }, payload) {
-      return axios.put('https://upwards.cf/api/user/profile/about', {
-        about: payload.about,
+      return axios.put('https://upwards.cf/api/user/profile/skills', {
+          skills: JSON.stringify([{name: 'vue', level: 4}])
       })
         .then(response => response)
         .catch(error => error.response);

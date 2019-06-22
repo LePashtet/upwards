@@ -88,10 +88,10 @@ export default {
     text-decoration: none;
     color: #595959;
   }
-
   .menu-wrp {
-    width: 500px;
-    height: 500px;
+    position: inherit ;
+    width: max-content;
+    height: max-content;
   }
 
   .menu_header {

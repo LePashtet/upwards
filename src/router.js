@@ -66,7 +66,7 @@ export default new Router({
     {
       path: '/test',
       name: 'test',
-      component: () => import('./components/Profile/settings/settings_skills.vue'),
+      component: () => import('./views/Profile_Settings.vue'),
     },
     // {
     //   path: '/about',

@@ -6,7 +6,7 @@
         </div>
         <div class="info_name_inputs">
           <input type="text" placeholder="@tag" v-model="tag" >
-          <input type="text" placeholder="Name" v-model="name">
+          <input type="text" placeholder="Name" v-model="f_name">
           <input type="text" placeholder="Surname" v-model="surname">
         </div>
       </div>
@@ -23,7 +23,7 @@ export default {
     btn,
   },
   props:{
-    name: String,
+    f_name: String,
     tag: String,
     surname: String,
   },
